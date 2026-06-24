@@ -1,0 +1,174 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-primary: #FFA000;
+    --color-primary-light: #FFD54F;
+    --color-primary-dark: #FF6F00;
+    --color-secondary: #FF3D00;
+    --color-tbb-red: #A11818;
+    --color-tbb-red-hover: #850E0E;
+    --color-bg-primary: #080808;
+    --color-bg-secondary: #121212;
+    --color-text-primary: #FAF9F6;
+    --color-text-secondary: #E0E0E0;
+    --color-text-muted: #888888;
+    --color-border: #1F1F1F;
+    --color-success: #4CAF50;
+    --color-error: #F44336;
+    
+    --font-display: 'Anton', sans-serif;
+    --font-body: 'Montserrat', sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-bg-primary);
+    color: var(--color-text-primary);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    color: var(--color-text-primary);
+    letter-spacing: 0.02em;
+  }
+}
+
+@layer utilities {
+  .focus-visible-ring:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+}
+
+/* Custom Typography Helpers - Matching Reference Site */
+.font-display-block {
+  font-family: 'Anton', sans-serif !important;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.font-display-italic {
+  font-family: 'Playfair Display', serif !important;
+  font-style: italic;
+  font-weight: 900;
+}
+
+.font-signature {
+  font-family: 'Kaushan Script', cursive !important;
+}
+
+.font-dm-serif {
+  font-family: 'DM Serif Display', serif !important;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+.font-dm-serif-italic {
+  font-family: 'DM Serif Display', serif !important;
+  font-style: italic;
+  font-weight: 400;
+}
+
+.font-sans-clean {
+  font-family: 'Montserrat', sans-serif !important;
+}
+
+/* Animações e transições personalizadas */
+.transition-smooth {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.brasa-pulse {
+  animation: pulse-brasa 2s infinite;
+}
+
+@keyframes pulse-brasa {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(255, 160, 0, 0.2), 0 0 20px rgba(255, 61, 0, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(255, 160, 0, 0.6), 0 0 35px rgba(255, 61, 0, 0.3);
+  }
+}
+
+/* Efeitos de brilho neon glow inspirados no logotipo */
+.text-glow-fogo {
+  text-shadow: 0 0 8px rgba(255, 61, 0, 0.6), 0 0 20px rgba(255, 61, 0, 0.2);
+}
+
+.text-glow-brasa {
+  text-shadow: 0 0 8px rgba(255, 160, 0, 0.6), 0 0 20px rgba(255, 160, 0, 0.2);
+}
+
+.text-glow-tbbRed {
+  text-shadow: 0 0 8px rgba(161, 24, 24, 0.6), 0 0 20px rgba(161, 24, 24, 0.2);
+}
+
+.text-glow-brasa-subtle {
+  text-shadow: 0 0 12px rgba(255, 160, 0, 0.28), 0 0 28px rgba(255, 160, 0, 0.1);
+}
+
+.text-glow-fogo-subtle {
+  text-shadow: 0 0 12px rgba(255, 61, 0, 0.28), 0 0 28px rgba(255, 61, 0, 0.1);
+}
+
+.text-glow-tbbRed-subtle {
+  text-shadow: 0 0 12px rgba(161, 24, 24, 0.28), 0 0 28px rgba(161, 24, 24, 0.1);
+}
+
+.shadow-glow-fogo {
+  box-shadow: 0 0 15px rgba(255, 61, 0, 0.5), 0 0 30px rgba(255, 61, 0, 0.2);
+}
+
+.shadow-glow-brasa {
+  box-shadow: 0 0 15px rgba(255, 160, 0, 0.5), 0 0 30px rgba(255, 160, 0, 0.2);
+}
+
+.shadow-glow-tbbRed {
+  box-shadow: 0 0 15px rgba(161, 24, 24, 0.5), 0 0 30px rgba(161, 24, 24, 0.2);
+}
+
+/* Esconder barra de rolagem */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Textura de ruído analógico global */
+.noise-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  content: "";
+  opacity: 0.022;
+  z-index: 9999;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Sombras e brilhos artesanais para os cards */
+.shadow-artesanal-brasa {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.03);
+}
+
+.shadow-artesanal-hover {
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.85), 
+              0 0 25px rgba(161, 24, 24, 0.08), 
+              inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
