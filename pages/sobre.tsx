@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
@@ -12,6 +12,123 @@ import ChatBot from '../components/ChatBot';
 
 export default function Sobre() {
   const [isChatOpen, setIsChatOpen] = useState(false);
+
+  const breadcrumbSchema = useMemo(() => ({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://thebestburguer.com.br"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Nossa História",
+        "item": "https://thebestburguer.com.br/sobre"
+      }
+    ]
+  }), []);
+
+  const faqSchema = useMemo(() => ({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Onde comer o verdadeiro hambúrguer artesanal em Teresópolis?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Para quem busca o autêntente hambúrguer artesanal e cortes nobres em Teresópolis, o The Best Burguer (TBB Hamburgueria Grill) é o local ideal. Servimos hambúrgueres artesanais e cortes de Steakhouse preparados com ingredientes de excelência nas nossas três unidades de atendimento: Agriões (Centro), Várzea e Vale Paraíso. Atendemos toda a cidade via delivery ou retirada rápida."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Quais são as três unidades da The Best Burguer e seus horários?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Temos três unidades prontas para lhe atender: 1) Agriões (Rua Nova Friburgo, Centro), funcionando de domingo a quinta das 19h30 à 1h30, e sextas/sábados das 19h30 até as 5h da manhã. 2) Várzea (Rua Nilza Chiapetta Fadigas, 596), funcionando de segunda a sábado das 18h20 às 23h20. 3) Vale Paraíso (Avenida Delfim Moreira, 2265), funcionando todos os dias das 17h às 0h."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "A The Best Burguer faz entregas na madrugada em Teresópolis?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sim! A nossa unidade de Agriões funciona nas sextas e sábados das 19h30 até às 5h da manhã, sendo a melhor opção na cidade para matar sua fome de hambúrguer artesanal durante a madrugada."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Como os hambúrgueres são preparados? É na chapa ou na parrilla?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Nossos hambúrgueres clássicos e smashes são preparados na chapa tradicional, o que garante aquela crostinha perfeita por fora e mantém a carne super suculenta por dentro. Já a nossa linha Parrilla & Steakhouse (como a Costela Grill 2.0 e o Prime Rib) é preparada diretamente na parrilla sob o fogo de verdade, conferindo um sabor defumado único e exclusivo aos cortes nobres."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Vocês cobram taxa de entrega para os bairros de Teresópolis?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Nossa taxa de entrega é calculada com base na proximidade da unidade mais próxima de sua residência (Agriões, Várzea ou Vale Paraíso). Cobrimos os principais bairros da cidade com taxas super justas e entregadores rápidos. Você pode simular o frete informando seu endereço no nosso WhatsApp."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "As unidades são Pet Friendly?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sim! Acreditamos que bons momentos devem ser compartilhados com quem amamos. Nossas unidades de Agriões e Várzea são 100% Pet Friendly, prontas para receber você e seu melhor amigo de quatro patas."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Tem espaço para crianças?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sim! A nossa unidade do Vale do Paraíso possui um Espaço Kids seguro e divertido para que seus filhos se divirtam enquanto você saboreia o melhor hambúrguer e cortes de steakhouse da serra."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Tem estacionamento nas unidades?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sim, a unidade do Vale do Paraíso (Avenida Delfim Moreira, 2265) possui estacionamento próprio e gratuito para total conforto e conveniência dos nossos clientes."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Vocês aceitam reservas de mesas?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sim, aceitamos reservas de mesa exclusivamente para a unidade Vale do Paraíso. Você pode solicitar a sua reserva de forma rápida entrando em contato pelo WhatsApp dedicado a reservas: (21) 97427-4841."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Quais são as promoções da semana?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Temos promoções especiais de segunda a sexta: Segunda-feira: 30% OFF em todas as porções de batata McCain. Terça-feira: X-Burguer em dobro (Terça em Dobro). Quarta-feira: Smash em Dobro (ativada via Stories). Quinta-feira: Aperitivo McCain grátis na compra de qualquer combo (Vale do Paraíso) + Caldos quentes no frio. Sexta-feira: Chopp e batata por nossa conta para grupos a partir de 4 pessoas (1ª rodada)."
+        }
+      }
+    ]
+  }), []);
+
+  const videoSchema = useMemo(() => ({
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    "name": "Como a TBB prepara seus hambúrgueres artesanais em Teresópolis",
+    "description": "Bastidores da TBB Hamburgueria Grill em Teresópolis: do blend à montagem perfeita.",
+    "thumbnailUrl": "https://thebestburguer.com.br/fotos/tbb-hero.webp",
+    "uploadDate": "2026-01-01T08:00:00Z",
+    "contentUrl": "https://www.youtube.com/watch?v=KxH_2fQY_D8",
+    "embedUrl": "https://www.youtube.com/embed/KxH_2fQY_D8"
+  }), []);
 
   // Timeline de marcos históricos
   const timelineEvents = [
@@ -76,17 +193,20 @@ export default function Sobre() {
     {
       name: "Irmãos Vicente (@irmaos.vicente)",
       type: "Steakhouse & Cortes Nobres",
-      desc: "Tradição em carnes nobres da fazenda à mesa, garantindo os melhores cortes para a nossa parrilla."
+      desc: "Tradição em carnes nobres da fazenda à mesa, garantindo os melhores cortes para a nossa parrilla.",
+      url: "https://www.instagram.com/irmaos.vicente/"
     },
     {
       name: "McCain Brasil",
       type: "Batatas SureCrisp",
-      desc: "Batatas oficiais super crocantes em todas as lojas, com promoção exclusiva nas segundas-feiras."
+      desc: "Batatas oficiais super crocantes em todas as lojas, com promoção exclusiva nas segundas-feiras.",
+      url: "https://www.mccain.com.br/"
     },
     {
       name: "Catupiry Oficial",
       type: "Recheios & Cremes Legítimos",
-      desc: "O legítimo requeijão cremoso para rechear nossos acompanhamentos e burgers com o sabor brasileiro."
+      desc: "O legítimo requeijão cremoso para rechear nossos acompanhamentos e burgers com o sabor brasileiro.",
+      url: "https://www.catupiry.com.br/"
     }
   ];
 
@@ -98,7 +218,36 @@ export default function Sobre() {
           name="description"
           content="Conheça a história de família da TBB: Luciane, Pedro, Gabriel, Mateus e Lucas. 10 anos de tradição em hambúrgueres artesanais e cortes de parrilla em Teresópolis."
         />
+        <link rel="canonical" href="https://thebestburguer.com.br/sobre" />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="pt_BR" />
+        <meta property="og:site_name" content={siteConfig.socialName || siteConfig.name} />
         <meta property="og:title" content="Nossa História | TBB Hamburgueria Artesanal & Steakhouse" />
+        <meta
+          property="og:description"
+          content="Conheça a história de família da TBB: Luciane, Pedro, Gabriel, Mateus e Lucas. 10 anos de tradição em hambúrgueres artesanais e cortes de parrilla em Teresópolis."
+        />
+        <meta property="og:url" content="https://thebestburguer.com.br/sobre" />
+        <meta property="og:image" content="https://thebestburguer.com.br/fotos/sobre-og.webp" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="História da TBB Hamburgueria Grill em Teresópolis" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Nossa História | TBB Hamburgueria Artesanal & Steakhouse" />
+        <meta name="twitter:description" content="A trajetória da TBB, mestre dos blends e cortes na parrilla." />
+        <meta name="twitter:image" content="https://thebestburguer.com.br/fotos/sobre-og.webp" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(videoSchema) }}
+        />
       </Head>
 
       <EmbersBackground />
@@ -121,7 +270,7 @@ export default function Sobre() {
             </span>
           </h1>
           <p className="font-sans-clean text-rustico/60 max-w-xl mx-auto text-sm sm:text-base leading-relaxed">
-            Uma trajetória de família, fogo de verdade e conexão profunda com a comunidade de Teresópolis.
+            Uma trajetória de família, sabor autêntico e conexão profunda com a comunidade de Teresópolis, na Região Serrana do Rio de Janeiro.
           </p>
         </div>
       </section>
@@ -182,28 +331,19 @@ export default function Sobre() {
       {/* Vídeo / Visual Brasa */}
       <section className="py-16 px-6 relative bg-black/20 border-t border-b border-white/[0.04]">
         <div className="max-w-5xl mx-auto flex flex-col lg:flex-row items-center gap-12">
-          {/* Vídeo Placeholder */}
+          {/* Vídeo Real (YouTube Iframe) */}
           <div className="w-full lg:w-1/2">
-            <div className="relative rounded overflow-hidden border border-white/[0.06] shadow-[0_8px_48px_rgba(0,0,0,0.7)] aspect-[16/9] group">
-              <Image
-                src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80&fm=webp"
-                alt="Churrasqueira industrial com brasas ardentes"
-                fill
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover transition-transform duration-700 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-br from-carvao/20 via-transparent to-carvao/40" />
-
-              <div className="absolute inset-0 flex flex-col items-center justify-center gap-4">
-                <div className="w-14 h-14 rounded-full bg-tbbRed/80 backdrop-blur-sm flex items-center justify-center shadow-[0_0_15px_rgba(161,24,24,0.4)] group-hover:bg-tbbRed transition-all duration-300">
-                  <Play className="w-6 h-6 fill-rustico ml-1" />
-                </div>
-                <div className="bg-carvao/70 backdrop-blur-sm border border-white/10 rounded-full px-4 py-1">
-                  <p className="font-cinzel text-[8px] text-rustico/60 uppercase tracking-widest">
-                    EM BREVE: VÍDEO DOS NOSSOS PREPAROS
-                  </p>
-                </div>
-              </div>
+            <div className="relative rounded overflow-hidden border border-white/[0.06] shadow-[0_8px_48px_rgba(0,0,0,0.7)] aspect-[16/9]">
+              <iframe
+                width="100%"
+                height="100%"
+                src="https://www.youtube.com/embed/KxH_2fQY_D8"
+                title="Como a TBB prepara seus hambúrgueres artesanais em Teresópolis"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+                className="w-full h-full absolute inset-0"
+              ></iframe>
             </div>
           </div>
 
@@ -214,7 +354,7 @@ export default function Sobre() {
               SUPER RIO EXPOFOOD
             </h3>
             <p className="font-sans-clean text-xs sm:text-sm text-rustico/60 leading-relaxed">
-              Viajamos anualmente para a Super Rio Expofood, um dos maiores eventos do setor alimentício da América Latina. Nosso objetivo é buscar inovação gastronômica, novas técnicas de parrilla e ferramentas tecnológicas para otimizar nosso atendimento.
+              Viajamos anualmente para a Super Rio Expofood, um dos maiores eventos do setor alimentício da América Latina. Nosso objetivo é buscar inovação gastronômica, novas técnicas de parrilla e cortes nobres na serra fluminense e ferramentas tecnológicas para otimizar nosso atendimento.
             </p>
             <p className="font-sans-clean text-xs sm:text-sm text-rustico/60 leading-relaxed">
               Dessa forma, unimos o acolhimento clássico de uma cozinha de família com a agilidade que a tecnologia moderna nos entrega para servir você cada vez melhor.
@@ -283,8 +423,10 @@ export default function Sobre() {
                       {partner.type}
                     </span>
                   </div>
-                  <h4 className="font-display text-sm text-rustico uppercase tracking-wider font-black">
-                    {partner.name}
+                  <h4 className="font-display text-sm text-rustico uppercase tracking-wider font-black hover:text-tbbRed transition-colors">
+                    <a href={partner.url} target="_blank" rel="noopener noreferrer">
+                      {partner.name}
+                    </a>
                   </h4>
                   <p className="font-sans-clean text-[11px] text-rustico/50 leading-relaxed">
                     {partner.desc}
@@ -348,6 +490,10 @@ export default function Sobre() {
           </div>
 
           <FAQAccordion />
+
+          <div className="text-center font-sans-clean text-[10px] text-rustico/30 mt-12 select-none">
+            Última atualização: <time dateTime="2026-06-24">Junho de 2026</time>
+          </div>
         </div>
       </section>
 

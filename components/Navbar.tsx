@@ -155,14 +155,7 @@ export default function Navbar({ activeSection }: NavbarProps) {
             DELIVERY
           </a>
 
-          {/* Área do Cliente (Link) */}
-          <a
-            href="#entrar"
-            className="flex items-center gap-2 font-cinzel text-[11px] font-bold tracking-widest text-rustico/80 hover:text-brasa transition-colors"
-          >
-            <UserIcon className="w-4 h-4 text-brasa" />
-            ENTRAR
-          </a>
+
 
           {/* Botão Peça Agora */}
           <a
@@ -223,14 +216,7 @@ export default function Navbar({ activeSection }: NavbarProps) {
             </div>
 
             <div className="flex flex-col gap-3 pt-2">
-              <a
-                href="#entrar"
-                onClick={handleLinkClick}
-                className="w-full py-3.5 border border-white/10 rounded flex items-center justify-center gap-2 font-cinzel font-bold text-xs tracking-widest text-rustico/80 hover:bg-white/5 transition-all"
-              >
-                <UserIcon className="w-4 h-4" />
-                ÁREA DO CLIENTE (ENTRAR)
-              </a>
+
               <a
                 href={siteConfig.contact.whatsappLink}
                 target="_blank"

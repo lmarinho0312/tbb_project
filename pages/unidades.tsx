@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import Head from 'next/head';
 import { motion } from 'framer-motion';
 import { MapPin, Clock, Info, ExternalLink, ShieldCheck, Smile, Gift, Award, Flame } from 'lucide-react';
@@ -11,6 +11,25 @@ import TiltCard from '../components/TiltCard';
 
 export default function Unidades() {
   const [isChatOpen, setIsChatOpen] = useState(false);
+
+  const breadcrumbSchema = useMemo(() => ({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://thebestburguer.com.br"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Unidades",
+        "item": "https://thebestburguer.com.br/unidades"
+      }
+    ]
+  }), []);
 
   // Mapeamento de ícones para os badges das unidades
   const getBadgeIcon = (badge: string) => {
@@ -53,7 +72,28 @@ export default function Unidades() {
           name="description"
           content="Conheça nossas 3 unidades em Teresópolis: Agriões (delivery na madrugada), Várzea (ambiente familiar) e Vale do Paraíso (Steakhouse com lareira e espaço kids)."
         />
+        <link rel="canonical" href="https://thebestburguer.com.br/unidades" />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="pt_BR" />
+        <meta property="og:site_name" content={siteConfig.socialName || siteConfig.name} />
         <meta property="og:title" content="Nossas Unidades | TBB Hamburgueria Artesanal & Steakhouse" />
+        <meta
+          property="og:description"
+          content="Conheça nossas 3 unidades em Teresópolis: Agriões (delivery na madrugada), Várzea (ambiente familiar) e Vale do Paraíso (Steakhouse com lareira e espaço kids)."
+        />
+        <meta property="og:url" content="https://thebestburguer.com.br/unidades" />
+        <meta property="og:image" content="https://thebestburguer.com.br/fotos/unidades-og.webp" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Unidades da TBB Hamburgueria Grill em Teresópolis" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Nossas Unidades | TBB Hamburgueria Artesanal & Steakhouse" />
+        <meta name="twitter:description" content="Conheça nossas lojas e peça pelo WhatsApp." />
+        <meta name="twitter:image" content="https://thebestburguer.com.br/fotos/unidades-og.webp" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+        />
       </Head>
 
       <EmbersBackground />
@@ -193,6 +233,23 @@ export default function Unidades() {
                 </TiltCard>
               </motion.div>
             ))}
+          </div>
+
+          {/* Seção de Incentivo a Reviews */}
+          <div className="max-w-xl mx-auto text-center p-8 bg-gradient-to-br from-[#1C1613] to-[#0D0A08] border border-[#2D231E] rounded-rustico-lg shadow-artesanal-brasa mt-6 select-none">
+            <span className="font-cinzel text-tbbRed text-[10px] tracking-[0.2em] font-bold uppercase mb-2 block">SUA OPINIÃO IMPORTA</span>
+            <h3 className="font-display text-xl text-rustico uppercase tracking-wider font-black mb-2">Gostou da TBB?</h3>
+            <p className="font-sans-clean text-xs text-rustico/55 leading-relaxed mb-6">
+              Avalie a gente no Google — são apenas 30 segundos que nos ajudam imensamente a levar nosso sabor artesanal para mais pessoas na Região Serrana.
+            </p>
+            <a
+              href="https://g.page/tbb-hamburgueria-teresopolis/review"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-transparent border border-tbbRed/30 hover:border-tbbRed text-tbbRed hover:text-rustico hover:bg-tbbRed font-cinzel font-bold text-xs uppercase tracking-widest rounded transition-all duration-300"
+            >
+              Deixar Avaliação no Google →
+            </a>
           </div>
         </div>
       </section>

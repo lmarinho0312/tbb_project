@@ -89,23 +89,18 @@ export default function FAQAccordion() {
               />
             </button>
 
-            <AnimatePresence initial={false}>
-              {isOpen && (
-                <motion.div
-                  id={`faq-answer-${index}`}
-                  role="tabpanel"
-                  aria-labelledby={`faq-question-${index}`}
-                  initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: 'auto', opacity: 1 }}
-                  exit={{ height: 0, opacity: 0 }}
-                  transition={{ duration: 0.25, ease: 'easeInOut' }}
-                >
-                  <div className="px-5 pb-5 pt-1 font-body text-xs lg:text-sm text-rustico/75 border-t border-white/5 leading-relaxed">
-                    {faq.answer}
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
+            <div
+              id={`faq-answer-${index}`}
+              role="tabpanel"
+              aria-labelledby={`faq-question-${index}`}
+              className={`transition-all duration-300 ease-in-out overflow-hidden ${
+                isOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0 pointer-events-none'
+              }`}
+            >
+              <div className="px-5 pb-5 pt-1 font-body text-xs lg:text-sm text-rustico/75 border-t border-white/5 leading-relaxed">
+                {faq.answer}
+              </div>
+            </div>
           </div>
         );
       })}

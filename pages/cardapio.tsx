@@ -72,6 +72,60 @@ export default function Cardapio() {
   const [searchQuery, setSearchQuery] = useState('');
   const [isChatOpen, setIsChatOpen] = useState(false);
 
+  const breadcrumbSchema = useMemo(() => ({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://thebestburguer.com.br"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Cardápio",
+        "item": "https://thebestburguer.com.br/cardapio"
+      }
+    ]
+  }), []);
+
+  const menuSchema = useMemo(() => ({
+    "@context": "https://schema.org",
+    "@type": "Menu",
+    "name": "Cardápio TBB Hamburgueria Grill",
+    "url": "https://thebestburguer.com.br/cardapio",
+    "hasMenuSection": Object.keys(menuData).map((categoryKey) => {
+      const categoryName = categoryKey === 'classicos' ? 'Clássicos' :
+                           categoryKey === 'premium' ? 'Premium' :
+                           categoryKey === 'smashes' ? 'Smashes' :
+                           categoryKey === 'parrilla' ? 'Parrilla & Steak' :
+                           categoryKey === 'combos' ? 'Combos' :
+                           categoryKey === 'acompanhamentos' ? 'Acompanhamentos' :
+                           categoryKey === 'bebidas' ? 'Bebidas' : 'Almoço';
+
+      return {
+        "@type": "MenuSection",
+        "name": categoryName,
+        "hasMenuItem": (menuData[categoryKey as TabType] || []).map((item) => {
+          const numericPrice = item.price.replace(/[^\d,]/g, '').replace(',', '.');
+          return {
+            "@type": "MenuItem",
+            "name": item.title,
+            "description": item.description,
+            "offers": {
+              "@type": "Offer",
+              "price": numericPrice,
+              "priceCurrency": "BRL",
+              "availability": "https://schema.org/InStock"
+            }
+          };
+        })
+      };
+    })
+  }), []);
+
   // Mapeamento de abas
   const tabs = [
     { id: 'classicos', label: 'CLÁSSICOS', icon: BurgerIcon },
@@ -113,12 +167,33 @@ export default function Cardapio() {
         <title>Cardápio Completo | TBB Hamburgueria Artesanal & Steakhouse</title>
         <meta
           name="description"
-          content="Explore o cardápio completo da TBB: hambúrgueres clássicos, premium, smashes, cortes nobres da parrilla, combos irresistíveis e almoço executivo."
+          content="Explore o cardápio completo da TBB: hambúrgueres clássicos, premium, smashes, cortes nobres da parrilla, combos irresistíveis e almoço executivo em Teresópolis."
         />
+        <link rel="canonical" href="https://thebestburguer.com.br/cardapio" />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="pt_BR" />
+        <meta property="og:site_name" content={siteConfig.socialName || siteConfig.name} />
         <meta property="og:title" content="Cardápio Completo | TBB Hamburgueria Artesanal & Steakhouse" />
         <meta
           property="og:description"
-          content="Escolha entre os melhores burgers artesanais, combos, porções McCain e cortes nobres de parrilla em Teresópolis."
+          content="Explore o cardápio completo da TBB: hambúrgueres clássicos, premium, smashes, cortes nobres da parrilla, combos e almoço executivo em Teresópolis."
+        />
+        <meta property="og:url" content="https://thebestburguer.com.br/cardapio" />
+        <meta property="og:image" content="https://thebestburguer.com.br/fotos/cardapio-og.webp" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Cardápio completo da TBB Hamburgueria Grill em Teresópolis" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Cardápio TBB | Hambúrgueres Artesanais em Teresópolis" />
+        <meta name="twitter:description" content="Burgers clássicos, smashes, parrilla e combos. Veja o cardápio completo da TBB." />
+        <meta name="twitter:image" content="https://thebestburguer.com.br/fotos/cardapio-og.webp" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(menuSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
         />
       </Head>
 
@@ -244,26 +319,49 @@ export default function Cardapio() {
 
           {/* Grid de Itens */}
           <div className="min-h-[400px]">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={`${activeTab}-${searchQuery}`}
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -15 }}
-                transition={{ duration: 0.3 }}
-              >
-                {filteredItems.length === 0 ? (
-                  <div className="flex flex-col items-center justify-center text-center py-20 gap-4">
-                    <span className="font-display text-xl text-rustico/40 uppercase tracking-widest">Nenhum item encontrado</span>
-                    <p className="font-sans-clean text-rustico/35 max-w-sm text-sm">
-                      Não encontramos nenhum produto que coincida com &quot;{searchQuery}&quot;. Tente buscar outros termos.
-                    </p>
-                  </div>
-                ) : (
-                  <>
+            {searchQuery.trim() && tabs.every(tab => {
+              const items = menuData[tab.id as TabType] || [];
+              return items.filter(item =>
+                item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                item.description.toLowerCase().includes(searchQuery.toLowerCase())
+              ).length === 0;
+            }) ? (
+              <div className="flex flex-col items-center justify-center text-center py-20 gap-4">
+                <span className="font-display text-xl text-rustico/40 uppercase tracking-widest">Nenhum item encontrado</span>
+                <p className="font-sans-clean text-rustico/35 max-w-sm text-sm">
+                  Não encontramos nenhum produto que coincida com &quot;{searchQuery}&quot;. Tente buscar outros termos.
+                </p>
+              </div>
+            ) : (
+              tabs.map((tab) => {
+                const items = menuData[tab.id as TabType] || [];
+                const tabFilteredItems = searchQuery.trim()
+                  ? items.filter(
+                      (item) =>
+                        item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                        item.description.toLowerCase().includes(searchQuery.toLowerCase())
+                    )
+                  : items;
+
+                // When searching, hide tabs with 0 matches. When not searching, hide inactive tabs.
+                const isTabHidden = searchQuery.trim()
+                  ? tabFilteredItems.length === 0
+                  : activeTab !== tab.id;
+
+                return (
+                  <div
+                    key={tab.id}
+                    className={isTabHidden ? 'hidden' : 'block'}
+                  >
+                    {searchQuery.trim() && (
+                      <h3 className="font-cinzel text-tbbRed text-xs tracking-widest font-bold uppercase mb-6 mt-8">
+                        {tab.label}
+                      </h3>
+                    )}
+
                     {/* Layout Mobile: Lista Vertical */}
-                    <div className="block sm:hidden flex flex-col gap-4">
-                      {filteredItems.map((item) => (
+                    <div className="block sm:hidden flex flex-col gap-4 mb-8">
+                      {tabFilteredItems.map((item) => (
                         <MenuItem
                           key={item.title}
                           title={item.title}
@@ -273,14 +371,14 @@ export default function Cardapio() {
                           imageUrl={item.imageUrl}
                           altText={item.altText}
                           layout="compact"
-                          tone={activeTab === 'almoco' ? 'almoco' : 'noturno'}
+                          tone={tab.id === 'almoco' ? 'almoco' : 'noturno'}
                         />
                       ))}
                     </div>
 
                     {/* Layout Desktop: Grid */}
-                    <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                      {filteredItems.map((item) => (
+                    <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                      {tabFilteredItems.map((item) => (
                         <MenuItem
                           key={item.title}
                           title={item.title}
@@ -289,16 +387,16 @@ export default function Cardapio() {
                           badge={item.badge}
                           imageUrl={item.imageUrl}
                           altText={item.altText}
-                          isCombo={activeTab === 'combos'}
+                          isCombo={tab.id === 'combos'}
                           layout="normal"
-                          tone={activeTab === 'almoco' ? 'almoco' : 'noturno'}
+                          tone={tab.id === 'almoco' ? 'almoco' : 'noturno'}
                         />
                       ))}
                     </div>
-                  </>
-                )}
-              </motion.div>
-            </AnimatePresence>
+                  </div>
+                );
+              })
+            )}
           </div>
 
         </div>

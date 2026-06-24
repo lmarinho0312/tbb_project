@@ -23,6 +23,51 @@ export default function Home() {
   const [activeReview, setActiveReview] = useState(0);
   const [isChatOpen, setIsChatOpen] = useState(false);
 
+  // ── COZINHA STATUS (CRO) ──
+  const [isOpenNow, setIsOpenNow] = useState(false);
+  const [openingMessage, setOpeningMessage] = useState("");
+
+  useEffect(() => {
+    const checkTime = () => {
+      const now = new Date();
+      const brTime = new Date(now.toLocaleString("en-US", { timeZone: "America/Sao_Paulo" }));
+      const day = brTime.getDay();
+      const hours = brTime.getHours();
+      const minutes = brTime.getMinutes();
+      const totalMinutes = hours * 60 + minutes;
+
+      let open = false;
+      let msg = "";
+
+      const isFridayOrSaturday = (day === 5 || day === 6);
+      
+      if (totalMinutes >= 1170) {
+        open = true;
+        msg = isFridayOrSaturday 
+          ? "🔴 AO VIVO — Cozinha aberta agora até as 5h00 (Unidade Agriões)"
+          : "🔴 AO VIVO — Cozinha aberta agora até as 1h30 (Unidade Agriões)";
+      } 
+      else if (totalMinutes < 300 && (day === 6 || day === 0)) {
+        open = true;
+        msg = "🔴 AO VIVO — Cozinha aberta agora até as 5h00 (Unidade Agriões)";
+      }
+      else if (totalMinutes < 90 && day >= 1 && day <= 5) {
+        open = true;
+        msg = "🔴 AO VIVO — Cozinha aberta agora até as 1h30 (Unidade Agriões)";
+      } else {
+        open = false;
+        msg = "Cozinha fechada agora. Abrimos hoje às 19h30!";
+      }
+
+      setIsOpenNow(open);
+      setOpeningMessage(msg);
+    };
+
+    checkTime();
+    const timer = setInterval(checkTime, 60000);
+    return () => clearInterval(timer);
+  }, []);
+
   // ── ESTADOS PARA O STORIES INLINE ──
   const [activeImageIndex, setActiveImageIndex] = useState(0);
   const [progress, setProgress] = useState(0);
@@ -138,6 +183,24 @@ export default function Home() {
       name: 'Rodrigo Alves',
       location: 'Agriões — Teresópolis',
       text: 'O hambúrguer artesanal tem outro nível de sabor. A maionese defumada com o clássico na chapa é sensacional. Chegou super rápido.'
+    },
+    {
+      initials: 'CM',
+      name: 'Carlos M.',
+      location: 'Agriões — Teresópolis',
+      text: 'Melhor burger de Teresópolis. Carne suculenta, pão macio e entrega rápida e no prazo.'
+    },
+    {
+      initials: 'AK',
+      name: 'Amanda K.',
+      location: 'Vale do Paraíso — Teresópolis',
+      text: 'O espaço kids da unidade Vale do Paraíso é excelente e a Costela Grill é deliciosa. Super recomendo para famílias!'
+    },
+    {
+      initials: 'BF',
+      name: 'Bruno F.',
+      location: 'Várzea — Teresópolis',
+      text: 'Os smashes são sensacionais. O pão brioche é super macio e a maionese temperada é a melhor. O atendimento da equipe é excelente!'
     }
   ];
 
@@ -169,27 +232,167 @@ export default function Home() {
     }
   };
 
-  // Schema JSON-LD para o restaurante
+  // Schema JSON-LD composto para o restaurante
   const restaurantSchema = {
     "@context": "https://schema.org",
-    "@type": "FastFoodRestaurant",
-    "name": siteConfig.name,
-    "image": "https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?auto=format&fit=crop&w=800&q=80&fm=webp",
-    "@id": `${siteConfig.url}/#restaurant`,
+    "@type": ["Restaurant", "LocalBusiness"],
+    "@id": `${siteConfig.url}/#organization`,
+    "name": "TBB Hamburgueria Grill",
+    "alternateName": "The Best Burguer",
+    "description": "Hambúrguer artesanal suculento e cortes premium grelhados na parrilla. O sabor de verdade da TBB entregue quente em Teresópolis desde 2015.",
     "url": siteConfig.url,
-    "telephone": "+5521971333919",
+    "telephone": "+55-21-97133-3919",
+    "foundingDate": "2015",
+    "servesCuisine": ["Hambúrguer Artesanal", "Steakhouse", "Parrilla"],
     "priceRange": "$$",
-    "menu": `${siteConfig.url}/cardapio`,
-    "servesCuisine": "American, Burgers",
-    "acceptsReservations": "true",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Rua Nova Friburgo, Centro",
-      "addressLocality": "Teresópolis",
-      "addressRegion": "RJ",
-      "postalCode": "25960-000",
-      "addressCountry": "BR"
-    }
+    "currenciesAccepted": "BRL",
+    "paymentAccepted": "Cash, Credit Card, Debit Card, PIX, Vale Refeição",
+    "hasMap": "https://maps.google.com/?q=TBB+Hamburgueria+Teresopolis",
+    "image": "https://thebestburguer.com.br/fotos/tbb-hero.webp",
+    "logo": "https://thebestburguer.com.br/logotbb.png",
+    "sameAs": [
+      "https://instagram.com/tbbhamburgueriaoficial"
+    ],
+    "amenityFeature": [
+      { "@type": "LocationFeatureSpecification", "name": "Pet Friendly", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Espaço Kids", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Estacionamento", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Delivery", "value": true }
+    ],
+    "review": [
+      {
+        "@type": "Review",
+        "author": { "@type": "Person", "name": "Lucas R." },
+        "datePublished": "2026-05-15",
+        "reviewBody": "Melhor burger que já comi! Carne no ponto perfeito e aquele sabor único que só a T.B.B tem. Simplesmente incrível!",
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5",
+          "bestRating": "5"
+        }
+      },
+      {
+        "@type": "Review",
+        "author": { "@type": "Person", "name": "Mariana Souza" },
+        "datePublished": "2026-05-20",
+        "reviewBody": "Sempre tive problemas com lanches que chegavam frios. Pedi o Combo Casal e chegou muito quente, queijo derretido e o sabor é simplesmente maravilhoso!",
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5",
+          "bestRating": "5"
+        }
+      },
+      {
+        "@type": "Review",
+        "author": { "@type": "Person", "name": "Rodrigo Alves" },
+        "datePublished": "2026-05-28",
+        "reviewBody": "O hambúrguer artesanal tem outro nível de sabor. A maionese defumada com o clássico na chapa é sensacional. Chegou super rápido.",
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5",
+          "bestRating": "5"
+        }
+      },
+      {
+        "@type": "Review",
+        "author": { "@type": "Person", "name": "Carlos M." },
+        "datePublished": "2026-06-02",
+        "reviewBody": "Melhor burger de Teresópolis. Carne suculenta, pão macio e entrega rápida e no prazo.",
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5",
+          "bestRating": "5"
+        }
+      },
+      {
+        "@type": "Review",
+        "author": { "@type": "Person", "name": "Amanda K." },
+        "datePublished": "2026-06-10",
+        "reviewBody": "O espaço kids da unidade Vale do Paraíso é excelente e a Costela Grill é deliciosa. Super recomendo para famílias!",
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5",
+          "bestRating": "5"
+        }
+      },
+      {
+        "@type": "Review",
+        "author": { "@type": "Person", "name": "Bruno F." },
+        "datePublished": "2026-06-15",
+        "reviewBody": "Os smashes são sensacionais. O pão brioche é super macio e a maionese temperada é a melhor. O atendimento da equipe é excelente!",
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5",
+          "bestRating": "5"
+        }
+      }
+    ],
+    "department": [
+      {
+        "@type": "LocalBusiness",
+        "name": "TBB Hamburgueria Grill — Unidade Agriões",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Rua Nova Friburgo, nº 47",
+          "addressLocality": "Teresópolis",
+          "addressRegion": "RJ",
+          "addressCountry": "BR"
+        },
+        "telephone": "+55-21-97133-3919",
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Sunday","Monday","Tuesday","Wednesday","Thursday"],
+            "opens": "19:30",
+            "closes": "01:30"
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Friday","Saturday"],
+            "opens": "19:30",
+            "closes": "05:00"
+          }
+        ]
+      },
+      {
+        "@type": "LocalBusiness",
+        "name": "TBB Hamburgueria Grill — Unidade Várzea",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Rua Nilza Chiapetta Fadigas, 596",
+          "addressLocality": "Teresópolis",
+          "addressRegion": "RJ",
+          "addressCountry": "BR"
+        },
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+            "opens": "18:20",
+            "closes": "23:20"
+          }
+        ]
+      },
+      {
+        "@type": "LocalBusiness",
+        "name": "TBB Hamburgueria Grill — Unidade Vale Paraíso",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Avenida Delfim Moreira, 2265",
+          "addressLocality": "Teresópolis",
+          "addressRegion": "RJ",
+          "addressCountry": "BR"
+        },
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+            "opens": "17:00",
+            "closes": "00:00"
+          }
+        ]
+      }
+    ]
   };
 
   return (
@@ -254,6 +457,18 @@ export default function Home() {
               <p className="font-sans-clean text-sm sm:text-base text-rustico/70 leading-relaxed max-w-lg">
                 Hambúrgueres artesanais, combos generosos e a nossa linha exclusiva de Steakhouse na parrilla.
               </p>
+
+              {openingMessage && (
+                <div className="flex items-center gap-2 px-4 py-1.5 bg-black/40 border border-white/[0.06] rounded-full text-xs font-sans-clean mt-1 select-none">
+                  <span className="relative flex h-2 w-2">
+                    <span className={`animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 ${isOpenNow ? 'bg-green-500' : 'bg-red-500'}`}></span>
+                    <span className={`relative inline-flex rounded-full h-2 w-2 ${isOpenNow ? 'bg-green-500' : 'bg-red-500'}`}></span>
+                  </span>
+                  <span className={isOpenNow ? 'text-green-400 font-medium' : 'text-rustico/45'}>
+                    {openingMessage}
+                  </span>
+                </div>
+              )}
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto mt-4">
                 <a
