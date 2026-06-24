@@ -1,5 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import Head from 'next/head';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Flame, Sparkles, Utensils, Search, ArrowRight, MessageSquare } from 'lucide-react';
 import { siteConfig } from '../config/site';
@@ -404,7 +405,15 @@ export default function Cardapio() {
 
       {/* Seção Call to Action Final */}
       <section className="relative py-24 px-6 border-t border-white/[0.04] bg-black overflow-hidden flex items-center justify-center text-center">
-        <div className="absolute inset-0 z-0 bg-cover bg-center opacity-10 bg-[url('https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1920&q=80')]" />
+        <div className="absolute inset-0 z-0 overflow-hidden opacity-10">
+          <Image
+            src="https://images.unsplash.com/photo-1544025162-d76694265947"
+            alt="Churrasco Parrilla"
+            fill
+            sizes="100vw"
+            className="object-cover object-center"
+          />
+        </div>
         <div className="relative z-10 max-w-3xl mx-auto flex flex-col gap-8 items-center">
           <div className="inline-flex items-center gap-1 bg-tbbRed/10 border border-tbbRed/20 px-3 py-1 rounded text-tbbRed font-cinzel text-[10px] tracking-wider uppercase font-bold">
             <Flame className="w-3.5 h-3.5 animate-pulse" /> FOME DE VERDADE?

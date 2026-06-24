@@ -94,19 +94,19 @@ export default function Home() {
 
   // Lista de imagens do stories
   const screenshots = [
-    { src: "/fotos/Screenshot_5.png", alt: "Atenção: Conteúdo altamente suculento!" },
-    { src: "/fotos/Screenshot_6.png", alt: "Burger Super Crispy com cebola crispy" },
-    { src: "/fotos/Screenshot_7.png", alt: "Experimente nosso X-Tudo" },
-    { src: "/fotos/Screenshot_9.png", alt: "Aqui não tem fake news, só hambúrguer suculento" },
-    { src: "/fotos/Screenshot_8.png", alt: "X-Egg, aquele hambúrguer cheio de sabor" },
-    { src: "/fotos/Screenshot_4.png", alt: "Tudo acaba em burger e fritas" },
-    { src: "/fotos/Screenshot_10.png", alt: "Não é só hambúrguer, é uma experiência" },
-    { src: "/fotos/Screenshot_3.png", alt: "A vida é curta demais para pedir TBB só no fim de semana" },
-    { src: "/fotos/Screenshot_11.png", alt: "Burger perfeito para os amantes de bacon" },
-    { src: "/fotos/Screenshot_2.png", alt: "Feedbacks reais dos nossos clientes satisfeitos" },
-    { src: "/fotos/Screenshot_12.png", alt: "Costela Grill 2.0 com cheddar e costela desfiada" },
-    { src: "/fotos/print1.png", alt: "Agende sua confraternização na unidade Vale Paraíso" },
-    { src: "/fotos/Screenshot_1.png", alt: "Somos pet friendly nas unidades Agriões e Várzea" }
+    { src: "/fotos/Screenshot_5.webp", alt: "Atenção: Conteúdo altamente suculento!" },
+    { src: "/fotos/Screenshot_6.webp", alt: "Burger Super Crispy com cebola crispy" },
+    { src: "/fotos/Screenshot_7.webp", alt: "Experimente nosso X-Tudo" },
+    { src: "/fotos/Screenshot_9.webp", alt: "Aqui não tem fake news, só hambúrguer suculento" },
+    { src: "/fotos/Screenshot_8.webp", alt: "X-Egg, aquele hambúrguer cheio de sabor" },
+    { src: "/fotos/Screenshot_4.webp", alt: "Tudo acaba em burger e fritas" },
+    { src: "/fotos/Screenshot_10.webp", alt: "Não é só hambúrguer, é uma experiência" },
+    { src: "/fotos/Screenshot_3.webp", alt: "A vida é curta demais para pedir TBB só no fim de semana" },
+    { src: "/fotos/Screenshot_11.webp", alt: "Burger perfeito para os amantes de bacon" },
+    { src: "/fotos/Screenshot_2.webp", alt: "Feedbacks reais dos nossos clientes satisfeitos" },
+    { src: "/fotos/Screenshot_12.webp", alt: "Costela Grill 2.0 com cheddar e costela desfiada" },
+    { src: "/fotos/print1.webp", alt: "Agende sua confraternização na unidade Vale Paraíso" },
+    { src: "/fotos/Screenshot_1.webp", alt: "Somos pet friendly nas unidades Agriões e Várzea" }
   ];
 
   const prevIndex = activeImageIndex === 0 ? screenshots.length - 1 : activeImageIndex - 1;
@@ -430,7 +430,7 @@ export default function Home() {
         <section id="home" className="relative min-h-[95vh] lg:min-h-screen flex items-center justify-center pt-28 pb-16 px-6 overflow-hidden">
           <div ref={heroImageRef} className="absolute inset-0 z-0 scale-[1.1]" style={{ transformOrigin: 'top center' }}>
             <Image
-              src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1600&q=80&fm=webp"
+              src="https://images.unsplash.com/photo-1544025162-d76694265947"
               alt="Brasas de carvão ardentes no fundo"
               fill
               priority
@@ -889,7 +889,15 @@ export default function Home() {
 
         {/* 8. CTA FINAL */}
         <section className="relative py-24 px-6 border-b border-white/[0.04] bg-black overflow-hidden flex items-center justify-center text-center">
-          <div className="absolute inset-0 z-0 bg-cover bg-center opacity-10 bg-[url('https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1920&q=80')]" />
+          <div className="absolute inset-0 z-0 overflow-hidden opacity-10">
+            <Image
+              src="https://images.unsplash.com/photo-1544025162-d76694265947"
+              alt="Churrasco Parrilla"
+              fill
+              sizes="100vw"
+              className="object-cover object-center"
+            />
+          </div>
           <div className="relative z-10 max-w-3xl mx-auto flex flex-col gap-8 items-center">
             <div className="inline-flex items-center gap-1 bg-tbbRed/10 border border-tbbRed/20 px-3 py-1 rounded text-tbbRed font-cinzel text-[10px] tracking-wider uppercase font-bold">
               <Flame className="w-3.5 h-3.5 animate-pulse" /> FOME DE VERDADE?

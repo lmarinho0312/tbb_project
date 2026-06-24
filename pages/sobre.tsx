@@ -256,7 +256,16 @@ export default function Sobre() {
 
       {/* Hero Header */}
       <section className="relative pt-32 pb-12 flex items-center justify-center border-b border-white/[0.04]">
-        <div className="absolute inset-0 z-0 bg-black/60 bg-[url('https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center opacity-15" />
+        <div className="absolute inset-0 z-0 overflow-hidden bg-black/60 opacity-15">
+          <Image
+            src="https://images.unsplash.com/photo-1544025162-d76694265947"
+            alt="Brasas de carvão"
+            fill
+            sizes="100vw"
+            priority
+            className="object-cover object-center"
+          />
+        </div>
         <div className="relative z-10 max-w-4xl mx-auto text-center px-6 flex flex-col gap-4">
           <span className="font-cinzel text-tbbRed text-xs tracking-[0.25em] font-bold uppercase">
             DESDE 2015 NA SERRA
