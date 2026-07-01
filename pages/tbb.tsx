@@ -321,28 +321,8 @@ export default function TbbProposal() {
           </div>
         </section>
 
-        {/* Bloco de Investimento e Prazos */}
-        <section className="mb-12 bg-gradient-to-b from-[#1C1610] to-black border border-[#FFA000]/20 rounded-2xl p-8 sm:p-12 text-center shadow-2xl relative overflow-hidden">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 px-4 py-1 bg-[#A11818] text-white font-bold text-xs uppercase tracking-widest rounded-b-lg">
-            Adesão de Canal
-          </div>
-          <h3 className="font-display text-2xl sm:text-3xl font-bold uppercase text-[#FAF9F6] mt-4 mb-2">Seu Novo Canal de Vendas Ativo</h3>
-          <p className="text-sm text-[#FAF9F6]/70 max-w-md mx-auto mb-6">
-            Todo o canal estratégico estruturado, otimizado para IAs e pronto para o Grupo TBB começar a faturar.
-          </p>
-          <div className="text-4xl sm:text-5xl font-bold text-[#FFA000] mb-2 font-display">
-            R$ 997
-          </div>
-          <span className="text-xs uppercase tracking-wider text-[#FAF9F6]/50 block mb-6">
-            Investimento Único · Sem Mensalidades · 1 Ano de Hospedagem Grátis
-          </span>
-          <p className="text-xs text-[#FAF9F6]/60 italic max-w-lg mx-auto border-t border-[#FAF9F6]/10 pt-4 mt-2">
-            *Protótipo completo e pronto para ativação. Ajustes finais — como inserção de fotos e pequenas personalizações — são realizados em até 2 dias úteis após o fechamento.
-          </p>
-        </section>
-
         {/* 5. CTAs Finais */}
-        <section className="text-center pt-8 border-t border-[#FAF9F6]/10">
+        <section className="text-center pt-8 border-t border-[#FAF9F6]/10 mb-12">
           <h2 className="font-display text-2xl sm:text-3xl font-bold uppercase mb-8">Vamos dar o próximo passo?</h2>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -366,6 +346,26 @@ export default function TbbProposal() {
               Falar no WhatsApp
             </a>
           </div>
+        </section>
+
+        {/* Bloco de Investimento e Prazos */}
+        <section className="mb-12 bg-gradient-to-b from-[#1C1610] to-black border border-[#FFA000]/20 rounded-2xl p-8 sm:p-12 text-center shadow-2xl relative overflow-hidden">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 px-4 py-1 bg-[#A11818] text-white font-bold text-xs uppercase tracking-widest rounded-b-lg">
+            Adesão de Canal
+          </div>
+          <h3 className="font-display text-2xl sm:text-3xl font-bold uppercase text-[#FAF9F6] mt-4 mb-2">Seu Novo Canal de Vendas Ativo</h3>
+          <p className="text-sm text-[#FAF9F6]/70 max-w-md mx-auto mb-6">
+            Todo o canal estratégico estruturado, otimizado para IAs e pronto para o Grupo TBB começar a faturar.
+          </p>
+          <div className="text-4xl sm:text-5xl font-bold text-[#FFA000] mb-2 font-display">
+            R$ 997
+          </div>
+          <span className="text-xs uppercase tracking-wider text-[#FAF9F6]/50 block mb-6">
+            Investimento Único · Sem Mensalidades · 1 Ano de Hospedagem Grátis
+          </span>
+          <p className="text-xs text-[#FAF9F6]/60 italic max-w-lg mx-auto border-t border-[#FAF9F6]/10 pt-4 mt-2">
+            *Protótipo completo e pronto para ativação. Ajustes finais — como inserção de fotos e pequenas personalizações — são realizados em até 2 dias úteis após o fechamento.
+          </p>
         </section>
       </main>
 
