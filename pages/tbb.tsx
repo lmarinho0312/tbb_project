@@ -136,7 +136,7 @@ export default function TbbProposal() {
               "Qual é o melhor restaurante premium com lareira acesa e parrilla para jantar em Teresópolis neste fim de semana?"
             </blockquote>
             <p>
-              Hoje, **nenhum** restaurante em Teresópolis está otimizado tecnicamente para responder a essas ferramentas de Inteligência Artificial. Isso é um "oceano azul". 
+              Hoje, nenhum restaurante em Teresópolis está otimizado para aparecer como recomendação em buscas feitas via IA — vocês serão os primeiros.
             </p>
             <p>
               O site que programamos para o Grupo TBB não é apenas um folheto digital. Ele é um **conector de dados estruturados**. Ele serve como o motor técnico que garante que quando um turista ou morador fizer essa pergunta para uma IA, a única resposta recomendada na serra seja a TBB.
@@ -229,6 +229,9 @@ export default function TbbProposal() {
                 <div className="text-2xl font-bold text-[#FAF9F6]/90">
                   {formatarMoeda(faturamentoMensal)}
                 </div>
+                <span className="text-[10px] text-[#FAF9F6]/40 block mt-3 leading-relaxed">
+                  *Estimativa baseada em volume de busca local. Resultados reais dependem da execução e adoção do canal.
+                </span>
               </div>
             </div>
           </div>
@@ -265,8 +268,8 @@ export default function TbbProposal() {
             <div className="flex gap-4 p-5 bg-[#120F0C] border border-[#FAF9F6]/5 rounded-xl">
               <CheckCircle className="w-6 h-6 text-[#FFA000] shrink-0" />
               <div>
-                <h3 className="font-bold text-lg mb-1 text-[#FAF9F6]">Design System Rústico-Premium</h3>
-                <p className="text-sm text-[#FAF9F6]/70">Identidade visual Next.js + Tailwind sob medida nas cores carvão e brasa da parrilla, fontes premium Anton e Montserrat, com micro-animações interativas de faíscas.</p>
+                <h3 className="font-bold text-lg mb-1 text-[#FAF9F6]">Identidade Rústico-Premium de Alta Performance</h3>
+                <p className="text-sm text-[#FAF9F6]/70">Canal extremamente rápido, moderno e fácil de atualizar, customizado nas cores carvão e brasa da parrilla, fontes premium Anton e Montserrat, com micro-animações interativas de faíscas.</p>
               </div>
             </div>
 
@@ -289,8 +292,8 @@ export default function TbbProposal() {
             <div className="flex gap-4 p-5 bg-[#120F0C] border border-[#FAF9F6]/5 rounded-xl">
               <CheckCircle className="w-6 h-6 text-[#FFA000] shrink-0" />
               <div>
-                <h3 className="font-bold text-lg mb-1 text-[#FAF9F6]">Otimização para Mecanismos de IA (GEO)</h3>
-                <p className="text-sm text-[#FAF9F6]/70">Marcação técnica avançada e dados de restaurante estruturados para que inteligências artificiais como ChatGPT, Gemini, Claude e Siri recomendem o Grupo TBB.</p>
+                <h3 className="font-bold text-lg mb-1 text-[#FAF9F6]">Pronto para a Busca do Amanhã (IA)</h3>
+                <p className="text-sm text-[#FAF9F6]/70">Configuração técnica invisível para que inteligências artificiais e assistentes de voz recomendem e citem o Grupo TBB como resposta na serra.</p>
               </div>
             </div>
           </div>
@@ -316,6 +319,26 @@ export default function TbbProposal() {
               </p>
             </div>
           </div>
+        </section>
+
+        {/* Bloco de Investimento e Prazos */}
+        <section className="mb-12 bg-gradient-to-b from-[#1C1610] to-black border border-[#FFA000]/20 rounded-2xl p-8 sm:p-12 text-center shadow-2xl relative overflow-hidden">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 px-4 py-1 bg-[#A11818] text-white font-bold text-xs uppercase tracking-widest rounded-b-lg">
+            Adesão de Canal
+          </div>
+          <h3 className="font-display text-2xl sm:text-3xl font-bold uppercase text-[#FAF9F6] mt-4 mb-2">Seu Novo Canal de Vendas Ativo</h3>
+          <p className="text-sm text-[#FAF9F6]/70 max-w-md mx-auto mb-6">
+            Todo o canal estratégico estruturado, otimizado para IAs e pronto para o Grupo TBB começar a faturar.
+          </p>
+          <div className="text-4xl sm:text-5xl font-bold text-[#FFA000] mb-2 font-display">
+            R$ 997
+          </div>
+          <span className="text-xs uppercase tracking-wider text-[#FAF9F6]/50 block mb-6">
+            Investimento Único · Sem Mensalidades · 1 Ano de Hospedagem Grátis
+          </span>
+          <p className="text-xs text-[#FAF9F6]/60 italic max-w-lg mx-auto border-t border-[#FAF9F6]/10 pt-4 mt-2">
+            *Protótipo completo e pronto para ativação. Ajustes finais — como inserção de fotos e pequenas personalizações — são realizados em até 2 dias úteis após o fechamento.
+          </p>
         </section>
 
         {/* 5. CTAs Finais */}
