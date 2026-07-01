@@ -12,6 +12,7 @@ import MenuItem from '../components/MenuItem';
 import EmbersBackground from '../components/EmbersBackground';
 import ChatBot from '../components/ChatBot';
 import TiltCard from '../components/TiltCard';
+import ScrollFadeIn from '../components/ScrollFadeIn';
 
 const WhatsAppIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
   <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
@@ -427,497 +428,278 @@ export default function Home() {
       <main id="conteudo-principal" role="main" className="overflow-hidden relative bg-carvao">
 
         {/* 1. HERO — ASYMMETRIC PREMIUM */}
-        <section id="home" className="relative min-h-[95vh] lg:min-h-screen flex items-center justify-center pt-28 pb-16 px-6 overflow-hidden">
-          <div ref={heroImageRef} className="absolute inset-0 z-0 scale-[1.1]" style={{ transformOrigin: 'top center' }}>
-            <Image
-              src="https://images.unsplash.com/photo-1544025162-d76694265947"
-              alt="Brasas de carvão ardentes no fundo"
-              fill
-              priority
-              sizes="100vw"
-              className="object-cover object-center opacity-[0.12] brightness-50"
-            />
-          </div>
-          <div className="absolute inset-0 z-0 bg-gradient-to-t from-carvao via-transparent to-black/80" />
-
-          <div className="relative z-10 max-w-4xl mx-auto w-full text-center flex flex-col items-center gap-8">
-            
-            {/* Informações & Títulos */}
-            <div className="flex flex-col items-center text-center gap-6 max-w-2xl">
-              <h1 className="font-display text-5xl sm:text-6xl lg:text-[5.5rem] text-rustico leading-[0.95] font-black uppercase tracking-tighter flex flex-col select-none">
-                <span className="opacity-95">SABOR DE VERDADE.</span>
-                <span className="text-tbbRed text-glow-tbbRed text-[5.8rem] sm:text-[6.8rem] lg:text-[7.2rem] tracking-tight py-1 font-black">TBB BURGUER.</span>
-                <span className="opacity-95">NO PONTO CERTO.</span>
-              </h1>
-
-              <p className="font-dm-serif-italic text-xl lg:text-2xl text-brasa/90 -mt-2">
-                10 anos de tradição e sabor na serra.
-              </p>
-
-              <p className="font-sans-clean text-sm sm:text-base text-rustico/70 leading-relaxed max-w-lg">
-                Hambúrgueres artesanais, combos generosos e a nossa linha exclusiva de Steakhouse na parrilla.
-              </p>
-
-              {openingMessage && (
-                <div className="flex items-center gap-2 px-4 py-1.5 bg-black/40 border border-white/[0.06] rounded-full text-xs font-sans-clean mt-1 select-none">
-                  <span className="relative flex h-2 w-2">
-                    <span className={`animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 ${isOpenNow ? 'bg-green-500' : 'bg-red-500'}`}></span>
-                    <span className={`relative inline-flex rounded-full h-2 w-2 ${isOpenNow ? 'bg-green-500' : 'bg-red-500'}`}></span>
-                  </span>
-                  <span className={isOpenNow ? 'text-green-400 font-medium' : 'text-rustico/45'}>
-                    {openingMessage}
-                  </span>
-                </div>
-              )}
-
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto mt-4">
-                <a
-                  href={siteConfig.contact.whatsappLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-tbbRed hover:bg-tbbRedHover text-rustico font-cinzel font-bold text-xs uppercase tracking-[0.15em] rounded transition-all duration-300 shadow-glow-tbbRed hover:scale-[1.02] active:scale-95"
-                >
-                  PEÇA AGORA
-                </a>
-                <a
-                  href={siteConfig.contact.whatsappLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-4 bg-transparent border border-rustico/20 hover:border-brasa/40 text-rustico hover:text-brasa font-cinzel font-bold text-xs uppercase tracking-[0.15em] rounded transition-all duration-300"
-                >
-                  <WhatsAppIcon className="w-5 h-5 shrink-0" />
-                  WHATSAPP DIRECT
-                </a>
-              </div>
+        <ScrollFadeIn direction="up">
+          <section id="home" className="relative min-h-[95vh] lg:min-h-screen flex items-center justify-center pt-28 pb-16 px-6 overflow-hidden">
+            <div ref={heroImageRef} className="absolute inset-0 z-0 scale-[1.1]" style={{ transformOrigin: 'top center' }}>
+              <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1544025162-d76694265947')] bg-cover bg-center opacity-[0.12] brightness-50"></div>
             </div>
+            <div className="absolute inset-0 z-0 bg-gradient-to-t from-carvao via-transparent to-black/80" />
 
-          </div>
-        </section>
+            <div className="relative z-10 max-w-4xl mx-auto w-full text-center flex flex-col items-center gap-8">
+              
+              {/* Informações & Títulos */}
+              <div className="flex flex-col items-center text-center gap-6 max-w-2xl">
+                <h1 className="font-display text-5xl sm:text-6xl lg:text-[5.5rem] text-rustico leading-[0.95] font-black uppercase tracking-tighter flex flex-col select-none">
+                  <span className="opacity-95">SABOR DE VERDADE.</span>
+                  <span className="text-tbbRed text-glow-tbbRed text-[5.8rem] sm:text-[6.8rem] lg:text-[7.2rem] tracking-tight py-1 font-black">TBB BURGUER.</span>
+                  <span className="opacity-95">NO PONTO CERTO.</span>
+                </h1>
 
-        {/* 2. BARRA DE DIFERENCIAIS ATUALIZADA (4 COLUNAS) */}
-        <section className="relative z-10 bg-black py-8 border-y border-white/[0.06] px-6">
-          <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-4 items-center">
-            {/* Pilar 1 */}
-            <div className="flex items-center gap-4 md:px-4 md:border-r border-white/[0.06] last:border-r-0">
-              <div className="p-3.5 rounded-full border border-tbbRed/30 shrink-0 text-tbbRed">
-                <Flame className="w-5 h-5" />
-              </div>
-              <div>
-                <h3 className="font-cinzel text-xs font-bold tracking-widest text-rustico uppercase">SABOR DE VERDADE</h3>
-                <p className="font-sans-clean text-[11px] text-rustico/50 mt-1">Ingredientes premium e receitas preparadas com dedicação.</p>
-              </div>
-            </div>
+                <p className="font-dm-serif-italic text-xl lg:text-2xl text-brasa/90 -mt-2">
+                  10 anos de tradição e sabor na serra.
+                </p>
 
-            {/* Pilar 2 */}
-            <div className="flex items-center gap-4 md:px-4 md:border-r border-white/[0.06] last:border-r-0">
-              <div className="p-3.5 rounded-full border border-tbbRed/30 shrink-0 text-tbbRed">
-                <Award className="w-5 h-5" />
-              </div>
-              <div>
-                <h3 className="font-cinzel text-xs font-bold tracking-widest text-rustico uppercase">10 ANOS NA SERRA</h3>
-                <p className="font-sans-clean text-[11px] text-rustico/50 mt-1">Legítima hamburgueria artesanal de Teresópolis.</p>
-              </div>
-            </div>
+                <p className="font-sans-clean text-sm sm:text-base text-rustico/70 leading-relaxed max-w-lg">
+                  Hambúrgueres artesanais, combos generosos e a nossa linha exclusiva de Steakhouse na parrilla.
+                </p>
 
-            {/* Pilar 3 */}
-            <div className="flex items-center gap-4 md:px-4 md:border-r border-white/[0.06] last:border-r-0">
-              <div className="p-3.5 rounded-full border border-tbbRed/30 shrink-0 text-tbbRed">
-                <Utensils className="w-5 h-5" />
-              </div>
-              <div>
-                <h3 className="font-cinzel text-xs font-bold tracking-widest text-rustico uppercase">3 UNIDADES</h3>
-                <p className="font-sans-clean text-[11px] text-rustico/50 mt-1">Lojas em Agriões, Várzea e Vale do Paraíso.</p>
-              </div>
-            </div>
-
-            {/* Pilar 4 */}
-            <div className="flex items-center gap-4 md:px-4 last:border-r-0">
-              <div className="p-3.5 rounded-full border border-tbbRed/30 shrink-0 text-tbbRed">
-                <Smile className="w-5 h-5" />
-              </div>
-              <div>
-                <h3 className="font-cinzel text-xs font-bold tracking-widest text-rustico uppercase">PET FRIENDLY</h3>
-                <p className="font-sans-clean text-[11px] text-rustico/50 mt-1">Seu amigo de 4 patas é bem-vindo nas lojas.</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* 3. STORIES INLINE (DIÁRIO DA BRASA) */}
-        <section id="highlights" className="py-24 px-6 border-b border-white/[0.04] relative bg-black/10">
-          <div className="max-w-5xl mx-auto flex flex-col gap-10 items-center text-center">
-            <div className="flex flex-col items-center gap-3">
-              <span className="font-cinzel text-tbbRed text-[11px] tracking-[0.2em] font-bold uppercase">
-                DIÁRIO TBB
-              </span>
-              <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl text-rustico font-black uppercase tracking-tight leading-none">
-                A VIDA É CURTA DEMAIS PARA PEDIR UM TBB SÓ NO FIM DE SEMANA!
-              </h2>
-            </div>
-
-            <div className="flex items-center justify-center gap-4 lg:gap-8 w-full max-w-5xl mx-auto py-2">
-              <button
-                onClick={handlePrevSlide}
-                className="w-12 h-12 rounded-full border border-white/10 hover:border-white/30 hover:bg-white/[0.03] flex items-center justify-center text-rustico/75 hover:text-rustico transition-all hidden md:flex shrink-0"
-                aria-label="Slide anterior"
-              >
-                <ChevronLeft className="w-6 h-6" />
-              </button>
-
-              <div
-                className="relative w-full max-w-sm aspect-[9/16] rounded-xl overflow-hidden border border-white/[0.06] shadow-[0_12px_48px_rgba(0,0,0,0.8)] cursor-pointer select-none"
-                onMouseDown={() => setIsPaused(true)}
-                onMouseUp={() => setIsPaused(false)}
-                onTouchStart={() => setIsPaused(true)}
-                onTouchEnd={() => setIsPaused(false)}
-              >
-                {/* Barras de Progresso */}
-                <div className="absolute top-3 inset-x-4 z-30 flex gap-1">
-                  {screenshots.map((_, idx) => (
-                    <div key={idx} className="flex-1 h-1 bg-white/20 rounded-full overflow-hidden">
-                      <div
-                        className="h-full bg-white transition-all duration-[40ms] ease-linear"
-                        style={{
-                          width: idx === activeImageIndex ? `${progress}%` : idx < activeImageIndex ? '100%' : '0%',
-                        }}
-                      />
-                    </div>
-                  ))}
-                </div>
-
-                {/* Efeito degradê escuro superior/inferior para leitura dos elementos de UI */}
-                <div className="absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-black/60 to-transparent z-20 pointer-events-none" />
-                <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-20 pointer-events-none" />
-
-                {/* Navegação Mobile nas laterais */}
-                <div className="absolute inset-y-0 left-0 w-1/4 z-20 cursor-w-resize" onClick={handlePrevSlide} />
-                <div className="absolute inset-y-0 right-0 w-1/4 z-20 cursor-e-resize" onClick={handleNextSlide} />
-
-                {/* Imagens Slider */}
-                <div className="relative w-full h-full">
-                  <Image
-                    src={screenshots[activeImageIndex].src}
-                    alt={screenshots[activeImageIndex].alt}
-                    fill
-                    sizes="(max-width: 640px) 100vw, 384px"
-                    className="object-cover pointer-events-none"
-                    priority
-                  />
-                </div>
-
-                {/* Copy / Legenda */}
-                <div className="absolute bottom-5 inset-x-5 z-30 flex flex-col gap-2">
-                  <span className="font-cinzel text-[9px] text-tbbRed tracking-widest font-black uppercase">
-                    @tbbhamburgueriaoficial
-                  </span>
-                  <p className="font-sans-clean text-xs text-rustico/90 font-bold leading-normal">
-                    {screenshots[activeImageIndex].alt}
-                  </p>
-                </div>
-              </div>
-
-              <button
-                onClick={handleNextSlide}
-                className="w-12 h-12 rounded-full border border-white/10 hover:border-white/30 hover:bg-white/[0.03] flex items-center justify-center text-rustico/75 hover:text-rustico transition-all hidden md:flex shrink-0"
-                aria-label="Próximo slide"
-              >
-                <ChevronRight className="w-6 h-6" />
-              </button>
-            </div>
-          </div>
-        </section>
-
-        {/* 4. DESTAQUES DO CARDÁPIO */}
-        <section className="py-24 px-6 border-b border-white/[0.04] relative">
-          <div className="max-w-7xl mx-auto flex flex-col gap-12">
-            
-            {/* Cabeçalho */}
-            <div className="flex flex-col items-center text-center gap-3">
-              <span className="font-cinzel text-tbbRed text-[11px] tracking-[0.2em] font-bold uppercase">
-                SELEÇÃO TBB
-              </span>
-              <h2 className="flex items-baseline gap-3 flex-wrap justify-center">
-                <span className="font-display text-4xl sm:text-5xl lg:text-6xl text-rustico font-black uppercase tracking-tight">
-                  DESTAQUES
-                </span>
-                <span className="font-dm-serif-italic text-3xl sm:text-4xl lg:text-5xl text-tbbRed">
-                  do Cardápio
-                </span>
-              </h2>
-              <p className="font-sans-clean text-rustico/50 text-xs sm:text-sm max-w-md mt-2">
-                Uma seleção especial dos queridinhos dos nossos clientes. Hambúrgueres suculentos na chapa e cortes nobres preparados na parrilla.
-              </p>
-            </div>
-
-            {/* Grid Destaques */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {highlights.map((item) => (
-                <MenuItem
-                  key={item.title}
-                  title={item.title}
-                  description={item.description}
-                  price={item.price}
-                  badge={item.badge}
-                  imageUrl={item.imageUrl}
-                  altText={item.altText}
-                  layout="normal"
-                  tone="noturno"
-                />
-              ))}
-            </div>
-
-            {/* Botão para Cardápio Completo */}
-            <div className="flex justify-center pt-6">
-              <Link
-                href="/cardapio"
-                className="inline-flex items-center gap-3 px-8 py-4 bg-transparent border border-tbbRed/40 hover:border-tbbRed hover:bg-tbbRed/5 text-rustico font-cinzel font-bold text-xs uppercase tracking-widest rounded transition-all duration-300"
-              >
-                Conheça Nosso Cardápio Completo <ArrowRight className="w-4 h-4 text-tbbRed" />
-              </Link>
-            </div>
-
-          </div>
-        </section>
-
-        {/* 5. SEÇÃO PROMOÇÕES DA SEMANA */}
-        <section className="py-24 px-6 border-b border-white/[0.04] bg-black/10 relative">
-          <div className="max-w-6xl mx-auto flex flex-col gap-12">
-            <div className="flex flex-col items-center text-center gap-2">
-              <span className="font-cinzel text-tbbRed text-[11px] tracking-[0.2em] font-bold uppercase">PREÇOS ESPECIAIS</span>
-              <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl text-rustico font-black uppercase tracking-tight">PROMOÇÕES DIÁRIAS</h2>
-              <p className="font-sans-clean text-rustico/55 text-xs sm:text-sm max-w-md mt-2">
-                De segunda a sexta, um motivo a mais para saborear a nossa qualidade por um preço especial.
-              </p>
-            </div>
-
-            {/* Grid Promoções */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-5 mt-4" style={{ perspective: 1000 }}>
-              {siteConfig.weeklyPromos.map((promo) => (
-                <TiltCard
-                  key={promo.day}
-                  className="flex flex-col justify-between p-6 bg-gradient-to-br from-[#1C1613] to-[#0D0A08] border border-[#2D231E] border-t-2 border-t-tbbRed/50 rounded-rustico-md shadow-artesanal-brasa hover:shadow-artesanal-hover hover:border-tbbRed/30 transition-all duration-300 group text-left"
-                >
-                  <div className="flex w-full justify-between items-center" style={{ transform: 'translateZ(20px)' }}>
-                    {/* Selo do Dia (Tíquete Vintage) */}
-                    <div className="font-cinzel text-[9px] tracking-[0.2em] font-black text-tbbRed bg-tbbRed/5 border border-tbbRed/15 px-2.5 py-0.5 rounded-sm">
-                      {promo.day}
-                    </div>
-                    {/* Icone flutuante no topo direito */}
-                    <div 
-                      className="text-2xl transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6"
-                      style={{ transform: 'translateZ(30px)' }}
-                    >
-                      {promo.icon}
-                    </div>
-                  </div>
-
-                  {/* Linha pontilhada estilo tíquete */}
-                  <div className="w-full h-px border-t border-dashed border-white/[0.06] my-4" />
-
-                  {/* Textos alinhados à esquerda */}
-                  <div className="flex flex-col flex-1 justify-end">
-                    <h4 
-                      className="font-display text-sm text-rustico uppercase tracking-wider font-black mb-1.5"
-                      style={{ transform: 'translateZ(15px)' }}
-                    >
-                      {promo.title}
-                    </h4>
-                    <p 
-                      className="font-sans-clean text-[10px] text-rustico/50 leading-relaxed"
-                      style={{ transform: 'translateZ(10px)' }}
-                    >
-                      {promo.copy}
-                    </p>
-                  </div>
-                </TiltCard>
-              ))}
-            </div>
-
-            <div className="flex justify-center pt-2">
-              <Link
-                href="/unidades"
-                className="inline-flex items-center gap-2 text-xs font-cinzel font-bold text-tbbRed hover:text-brasa transition-colors uppercase tracking-widest"
-              >
-                Ver regras e lojas participantes →
-              </Link>
-            </div>
-          </div>
-        </section>
-
-        {/* 6. NOSSAS UNIDADES (COMPACTA) */}
-        <section className="py-24 px-6 border-b border-white/[0.04] relative">
-          <div className="max-w-6xl mx-auto flex flex-col gap-12">
-            
-            {/* Cabeçalho */}
-            <div className="flex flex-col items-center text-center gap-3">
-              <span className="font-cinzel text-tbbRed text-[11px] tracking-[0.2em] font-bold uppercase">
-                VENHA NOS VISITAR
-              </span>
-              <h2 className="flex items-baseline gap-3 flex-wrap justify-center">
-                <span className="font-display text-4xl sm:text-5xl lg:text-6xl text-rustico font-black uppercase tracking-tight">
-                  UNIDADES
-                </span>
-                <span className="font-dm-serif-italic text-3xl sm:text-4xl lg:text-5xl text-tbbRed">
-                  Teresópolis
-                </span>
-              </h2>
-            </div>
-
-            {/* Grid 3 Lojas */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {siteConfig.locations.map((loc) => (
-                <div
-                  key={loc.name}
-                  className="p-6 bg-white/[0.01] border border-white/[0.05] hover:border-white/10 rounded-lg flex flex-col gap-4 transition-all duration-300 justify-between"
-                >
-                  <div className="flex flex-col gap-3">
-                    <h3 className="font-display text-xl text-rustico uppercase tracking-wide font-black">
-                      {loc.name}
-                    </h3>
-                    
-                    {/* Badges de Lojas */}
-                    <div className="flex flex-wrap gap-1">
-                      {loc.badges?.map((badge) => (
-                        <span
-                          key={badge}
-                          className="px-2 py-0.5 bg-white/[0.03] border border-white/[0.05] rounded text-[8px] font-cinzel uppercase tracking-widest text-rustico/60"
-                        >
-                          {getBadgeIcon(badge)} {badge}
-                        </span>
-                      ))}
-                    </div>
-
-                    <p className="font-sans-clean text-xs text-rustico/45 mt-1 leading-relaxed">
-                      {loc.details}
-                    </p>
-
-                    <div className="flex flex-col gap-2 mt-4 text-xs font-sans-clean text-rustico/65">
-                      <div className="flex gap-2.5 items-start">
-                        <MapPin className="w-4 h-4 text-tbbRed shrink-0 mt-0.5" />
-                        <span>{loc.address.split(',')[0]}</span>
-                      </div>
-                      <div className="flex gap-2.5 items-start">
-                        <Clock className="w-4 h-4 text-brasa shrink-0 mt-0.5" />
-                        <span>{loc.hours}</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <a
-                    href={loc.whatsappLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full inline-flex items-center justify-center py-2.5 bg-white/[0.03] hover:bg-tbbRed border border-white/10 hover:border-tbbRed text-rustico font-cinzel font-bold text-[10px] uppercase tracking-widest rounded mt-6 transition-all duration-300"
-                  >
-                    Fazer Pedido
-                  </a>
-                </div>
-              ))}
-            </div>
-
-            <div className="flex justify-center pt-4">
-              <Link
-                href="/unidades"
-                className="inline-flex items-center gap-3 px-8 py-4 bg-transparent border border-white/10 hover:border-white/30 text-rustico font-cinzel font-bold text-xs uppercase tracking-widest rounded transition-all duration-300"
-              >
-                Ver Mapas Integrados e Detalhes <ArrowRight className="w-4 h-4 text-tbbRed" />
-              </Link>
-            </div>
-
-          </div>
-        </section>
-
-        {/* 7. DEPOIMENTOS */}
-        <section id="depoimentos" className="py-24 px-6 border-b border-white/[0.04] relative" style={{ backgroundColor: '#1C1610' }}>
-          <div className="max-w-5xl mx-auto flex flex-col gap-12 items-center text-center">
-            <div className="flex flex-col items-center gap-2">
-              <span className="font-cinzel text-tbbRed text-[11px] tracking-[0.2em] font-bold uppercase">
-                AVALIAÇÕES REAIS
-              </span>
-              <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl text-rustico font-black uppercase tracking-tight">
-                QUEM PROVA, NÃO TEM DUVIDAS
-              </h2>
-            </div>
-
-            <div className="relative w-full max-w-3xl mx-auto py-6 px-4">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={activeReview}
-                  initial={{ opacity: 0, scale: 0.98 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.98 }}
-                  transition={{ duration: 0.3 }}
-                  className="flex flex-col items-center gap-6"
-                >
-                  <div className="w-16 h-16 rounded-full bg-tbbRed/15 border border-tbbRed/20 flex items-center justify-center text-tbbRed font-cinzel text-xl font-bold">
-                    {reviews[activeReview].initials}
-                  </div>
-                  <blockquote className="font-dm-serif text-lg sm:text-xl lg:text-2xl text-rustico/80 leading-relaxed max-w-2xl italic">
-                    &ldquo;{reviews[activeReview].text}&rdquo;
-                  </blockquote>
-                  <div>
-                    <cite className="font-display text-sm text-rustico uppercase tracking-wider font-bold block not-italic">
-                      {reviews[activeReview].name}
-                    </cite>
-                    <span className="font-sans-clean text-[10px] text-rustico/45 uppercase tracking-widest mt-1 block">
-                      {reviews[activeReview].location}
+                {openingMessage && (
+                  <div className="flex items-center gap-2 px-4 py-1.5 bg-black/40 border border-white/[0.06] rounded-full text-xs font-sans-clean mt-1 select-none">
+                    <span className="relative flex h-2 w-2">
+                      <span className={`animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 ${isOpenNow ? 'bg-green-500' : 'bg-red-500'}`}></span>
+                      <span className={`relative inline-flex rounded-full h-2 w-2 ${isOpenNow ? 'bg-green-500' : 'bg-red-500'}`}></span>
+                    </span>
+                    <span className={isOpenNow ? 'text-green-400 font-medium' : 'text-rustico/45'}>
+                      {openingMessage}
                     </span>
                   </div>
-                </motion.div>
-              </AnimatePresence>
+                )}
 
-              {/* Controles de Slide */}
-              <div className="flex justify-center gap-4 mt-8">
-                <button
-                  onClick={handlePrevReview}
-                  className="w-10 h-10 rounded-full border border-white/5 bg-black/10 hover:border-white/20 text-rustico/60 hover:text-rustico flex items-center justify-center transition-all"
-                  aria-label="Avaliação anterior"
-                >
-                  <ChevronLeft className="w-5 h-5" />
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto mt-4">
+                  <a
+                    href={siteConfig.contact.whatsappLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-tbbRed hover:bg-tbbRedHover text-rustico font-cinzel font-bold text-xs uppercase tracking-[0.15em] rounded transition-all duration-300 shadow-glow-tbbRed hover:scale-[1.02] active:scale-95"
+                  >
+                    PEÇA AGORA
+                  </a>
+                  <a
+                    href={siteConfig.contact.whatsappLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-4 bg-transparent border border-rustico/20 hover:border-brasa/40 text-rustico hover:text-brasa font-cinzel font-bold text-xs uppercase tracking-[0.15em] rounded transition-all duration-300"
+                  >
+                    <WhatsAppIcon className="w-5 h-5 shrink-0" />
+                    WHATSAPP DIRECT
+                  </a>
+                </div>
+              </div>
+            </div>
+          </section>
+        </ScrollFadeIn>
+
+        {/* 2. BARRA DE DIFERENCIAIS */}
+        <ScrollFadeIn direction="up" delay={0.05}>
+          <section className="relative z-10 bg-black py-8 border-y border-white/[0.06] px-6">
+            <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-4 items-center">
+              <div className="flex items-center gap-4 md:px-4 md:border-r border-white/[0.06] last:border-r-0">
+                <div className="p-3.5 rounded-full border border-tbbRed/30 shrink-0 text-tbbRed">
+                  <Flame className="w-5 h-5" />
+                </div>
+                <div>
+                  <h3 className="font-cinzel text-xs font-bold tracking-widest text-rustico uppercase">SABOR DE VERDADE</h3>
+                  <p className="font-sans-clean text-[11px] text-rustico/50 mt-1">Ingredientes premium e receitas preparadas com dedicação.</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-4 md:px-4 md:border-r border-white/[0.06] last:border-r-0">
+                <div className="p-3.5 rounded-full border border-tbbRed/30 shrink-0 text-tbbRed">
+                  <Award className="w-5 h-5" />
+                </div>
+                <div>
+                  <h3 className="font-cinzel text-xs font-bold tracking-widest text-rustico uppercase">10 ANOS NA SERRA</h3>
+                  <p className="font-sans-clean text-[11px] text-rustico/50 mt-1">Legítima hamburgueria artesanal de Teresópolis.</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-4 md:px-4 md:border-r border-white/[0.06] last:border-r-0">
+                <div className="p-3.5 rounded-full border border-tbbRed/30 shrink-0 text-tbbRed">
+                  <Utensils className="w-5 h-5" />
+                </div>
+                <div>
+                  <h3 className="font-cinzel text-xs font-bold tracking-widest text-rustico uppercase">3 UNIDADES</h3>
+                  <p className="font-sans-clean text-[11px] text-rustico/50 mt-1">Lojas em Agriões, Várzea e Vale do Paraíso.</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-4 md:px-4 last:border-r-0">
+                <div className="p-3.5 rounded-full border border-tbbRed/30 shrink-0 text-tbbRed">
+                  <Smile className="w-5 h-5" />
+                </div>
+                <div>
+                  <h3 className="font-cinzel text-xs font-bold tracking-widest text-rustico uppercase">PET FRIENDLY</h3>
+                  <p className="font-sans-clean text-[11px] text-rustico/50 mt-1">Seu amigo de 4 patas é bem-vindo nas lojas.</p>
+                </div>
+              </div>
+            </div>
+          </section>
+        </ScrollFadeIn>
+
+        {/* 3. STORIES INLINE */}
+        <ScrollFadeIn direction="left">
+          <section id="highlights" className="py-24 px-6 border-b border-white/[0.04] relative bg-black/10">
+            <div className="max-w-5xl mx-auto flex flex-col gap-10 items-center text-center">
+              <div className="flex flex-col items-center gap-3">
+                <span className="font-cinzel text-tbbRed text-[11px] tracking-[0.2em] font-bold uppercase">DIÁRIO TBB</span>
+                <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl text-rustico font-black uppercase tracking-tight leading-none">
+                  A VIDA É CURTA DEMAIS PARA PEDIR UM TBB SÓ NO FIM DE SEMANA!
+                </h2>
+              </div>
+
+              <div className="flex items-center justify-center gap-4 lg:gap-8 w-full max-w-5xl mx-auto py-2">
+                <button onClick={handlePrevSlide} className="w-12 h-12 rounded-full border border-white/10 hover:border-white/30 hover:bg-white/[0.03] flex items-center justify-center text-rustico/75 hover:text-rustico transition-all hidden md:flex shrink-0">
+                  <ChevronLeft className="w-6 h-6" />
                 </button>
-                <button
-                  onClick={handleNextReview}
-                  className="w-10 h-10 rounded-full border border-white/5 bg-black/10 hover:border-white/20 text-rustico/60 hover:text-rustico flex items-center justify-center transition-all"
-                  aria-label="Próxima avaliação"
-                >
-                  <ChevronRight className="w-5 h-5" />
+
+                <div className="relative w-full max-w-sm aspect-[9/16] rounded-xl overflow-hidden border border-white/[0.06] shadow-[0_12px_48px_rgba(0,0,0,0.8)] cursor-pointer select-none" onMouseDown={() => setIsPaused(true)} onMouseUp={() => setIsPaused(false)} onTouchStart={() => setIsPaused(true)} onTouchEnd={() => setIsPaused(false)}>
+                  <div className="absolute top-3 inset-x-4 z-30 flex gap-1">
+                    {screenshots.map((_, idx) => (
+                      <div key={idx} className="flex-1 h-1 bg-white/20 rounded-full overflow-hidden">
+                        <div className="h-full bg-white transition-all duration-[40ms] ease-linear" style={{ width: idx === activeImageIndex ? `${progress}%` : idx < activeImageIndex ? '100%' : '0%' }} />
+                      </div>
+                    ))}
+                  </div>
+                  <div className="absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-black/60 to-transparent z-20 pointer-events-none" />
+                  <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-20 pointer-events-none" />
+                  <div className="absolute inset-y-0 left-0 w-1/4 z-20 cursor-w-resize" onClick={handlePrevSlide} />
+                  <div className="absolute inset-y-0 right-0 w-1/4 z-20 cursor-e-resize" onClick={handleNextSlide} />
+                  <div className="relative w-full h-full">
+                    <Image src={screenshots[activeImageIndex].src} alt={screenshots[activeImageIndex].alt} fill sizes="(max-width: 640px) 100vw, 384px" className="object-cover pointer-events-none" priority />
+                  </div>
+                  <div className="absolute bottom-5 inset-x-5 z-30 flex flex-col gap-2">
+                    <span className="font-cinzel text-[9px] text-tbbRed tracking-widest font-black uppercase">@tbbhamburgueriaoficial</span>
+                    <p className="font-sans-clean text-xs text-rustico/90 font-bold leading-normal">{screenshots[activeImageIndex].alt}</p>
+                  </div>
+                </div>
+
+                <button onClick={handleNextSlide} className="w-12 h-12 rounded-full border border-white/10 hover:border-white/30 hover:bg-white/[0.03] flex items-center justify-center text-rustico/75 hover:text-rustico transition-all hidden md:flex shrink-0">
+                  <ChevronRight className="w-6 h-6" />
                 </button>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
+        </ScrollFadeIn>
+
+        {/* 4. DESTAQUES DO CARDÁPIO */}
+        <ScrollFadeIn direction="right">
+          <section className="py-24 px-6 border-b border-white/[0.04] relative">
+            <div className="max-w-7xl mx-auto flex flex-col gap-12">
+              <div className="flex flex-col items-center text-center gap-3">
+                <span className="font-cinzel text-tbbRed text-[11px] tracking-[0.2em] font-bold uppercase">SELEÇÃO TBB</span>
+                <h2 className="flex items-baseline gap-3 flex-wrap justify-center">
+                  <span className="font-display text-4xl sm:text-5xl lg:text-6xl text-rustico font-black uppercase tracking-tight">DESTAQUES</span>
+                  <span className="font-dm-serif-italic text-3xl sm:text-4xl lg:text-5xl text-tbbRed">do Cardápio</span>
+                </h2>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                {highlights.map((item) => (
+                  <MenuItem key={item.title} title={item.title} description={item.description} price={item.price} badge={item.badge} imageUrl={item.imageUrl} altText={item.altText} layout="normal" tone="noturno" />
+                ))}
+              </div>
+              <div className="flex justify-center pt-6">
+                <Link href="/cardapio" className="inline-flex items-center gap-3 px-8 py-4 bg-transparent border border-tbbRed/40 hover:border-tbbRed hover:bg-tbbRed/5 text-rustico font-cinzel font-bold text-xs uppercase tracking-widest rounded transition-all duration-300">
+                  Conheça Nosso Cardápio Completo <ArrowRight className="w-4 h-4 text-tbbRed" />
+                </Link>
+              </div>
+            </div>
+          </section>
+        </ScrollFadeIn>
+
+        {/* 5. SEÇÃO PROMOÇÕES */}
+        <ScrollFadeIn direction="left">
+          <section className="py-24 px-6 border-b border-white/[0.04] bg-black/10 relative">
+            <div className="max-w-6xl mx-auto flex flex-col gap-12">
+              <div className="flex flex-col items-center text-center gap-2">
+                <span className="font-cinzel text-tbbRed text-[11px] tracking-[0.2em] font-bold uppercase">PREÇOS ESPECIAIS</span>
+                <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl text-rustico font-black uppercase tracking-tight">PROMOÇÕES DIÁRIAS</h2>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-5 mt-4" style={{ perspective: 1000 }}>
+                {siteConfig.weeklyPromos.map((promo) => (
+                  <TiltCard key={promo.day} className="flex flex-col justify-between p-6 bg-gradient-to-br from-[#1C1613] to-[#0D0A08] border border-[#2D231E] border-t-2 border-t-tbbRed/50 rounded-rustico-md shadow-artesanal-brasa hover:shadow-artesanal-hover hover:border-tbbRed/30 transition-all duration-300 group text-left">
+                    <div className="flex w-full justify-between items-center" style={{ transform: 'translateZ(20px)' }}>
+                      <div className="font-cinzel text-[9px] tracking-[0.2em] font-black text-tbbRed bg-tbbRed/5 border border-tbbRed/15 px-2.5 py-0.5 rounded-sm">{promo.day}</div>
+                      <div className="text-2xl transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6" style={{ transform: 'translateZ(30px)' }}>{promo.icon}</div>
+                    </div>
+                    <div className="w-full h-px border-t border-dashed border-white/[0.06] my-4" />
+                    <div className="flex flex-col flex-1 justify-end">
+                      <h4 className="font-display text-sm text-rustico uppercase tracking-wider font-black mb-1.5" style={{ transform: 'translateZ(15px)' }}>{promo.title}</h4>
+                      <p className="font-sans-clean text-[10px] text-rustico/50 leading-relaxed" style={{ transform: 'translateZ(10px)' }}>{promo.copy}</p>
+                    </div>
+                  </TiltCard>
+                ))}
+              </div>
+            </div>
+          </section>
+        </ScrollFadeIn>
+
+        {/* 6. NOSSAS UNIDADES */}
+        <ScrollFadeIn direction="right">
+          <section className="py-24 px-6 border-b border-white/[0.04] relative">
+            <div className="max-w-6xl mx-auto flex flex-col gap-12">
+              <div className="flex flex-col items-center text-center gap-3">
+                <span className="font-cinzel text-tbbRed text-[11px] tracking-[0.2em] font-bold uppercase">VENHA NOS VISITAR</span>
+                <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl text-rustico font-black uppercase tracking-tight">UNIDADES</h2>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {siteConfig.locations.map((loc) => (
+                  <div key={loc.name} className="p-6 bg-white/[0.01] border border-white/[0.05] hover:border-white/10 rounded-lg flex flex-col gap-4 transition-all duration-300 justify-between">
+                    <div className="flex flex-col gap-3">
+                      <h3 className="font-display text-xl text-rustico uppercase tracking-wide font-black">{loc.name}</h3>
+                      <div className="flex flex-wrap gap-1">
+                        {loc.badges?.map((badge) => (
+                          <span key={badge} className="px-2 py-0.5 bg-white/[0.03] border border-white/[0.05] rounded text-[8px] font-cinzel uppercase tracking-widest text-rustico/60">
+                            {getBadgeIcon(badge)} {badge}
+                          </span>
+                        ))}
+                      </div>
+                      <div className="flex flex-col gap-2 mt-4 text-xs font-sans-clean text-rustico/65">
+                        <div className="flex gap-2.5 items-start"><MapPin className="w-4 h-4 text-tbbRed shrink-0 mt-0.5" /><span>{loc.address.split(',')[0]}</span></div>
+                        <div className="flex gap-2.5 items-start"><Clock className="w-4 h-4 text-brasa shrink-0 mt-0.5" /><span>{loc.hours}</span></div>
+                      </div>
+                    </div>
+                    <a href={loc.whatsappLink} target="_blank" rel="noopener noreferrer" className="w-full inline-flex items-center justify-center py-2.5 bg-white/[0.03] hover:bg-tbbRed border border-white/10 hover:border-tbbRed text-rustico font-cinzel font-bold text-[10px] uppercase tracking-widest rounded mt-6 transition-all duration-300">Fazer Pedido</a>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        </ScrollFadeIn>
+
+        {/* 7. DEPOIMENTOS */}
+        <ScrollFadeIn direction="left">
+          <section id="depoimentos" className="py-24 px-6 border-b border-white/[0.04] relative" style={{ backgroundColor: '#1C1610' }}>
+            <div className="max-w-5xl mx-auto flex flex-col gap-12 items-center text-center">
+              <div className="flex flex-col items-center gap-2">
+                <span className="font-cinzel text-tbbRed text-[11px] tracking-[0.2em] font-bold uppercase">AVALIAÇÕES REAIS</span>
+                <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl text-rustico font-black uppercase tracking-tight">QUEM PROVA, NÃO TEM DUVIDAS</h2>
+              </div>
+              <div className="relative w-full max-w-3xl mx-auto py-6 px-4">
+                <AnimatePresence mode="wait">
+                  <motion.div key={activeReview} initial={{ opacity: 0, scale: 0.98 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.98 }} transition={{ duration: 0.3 }} className="flex flex-col items-center gap-6">
+                    <div className="w-16 h-16 rounded-full bg-tbbRed/15 border border-tbbRed/20 flex items-center justify-center text-tbbRed font-cinzel text-xl font-bold">{reviews[activeReview].initials}</div>
+                    <blockquote className="font-dm-serif text-lg sm:text-xl lg:text-2xl text-rustico/80 leading-relaxed max-w-2xl italic">&ldquo;{reviews[activeReview].text}&rdquo;</blockquote>
+                  </motion.div>
+                </AnimatePresence>
+                <div className="flex justify-center gap-4 mt-8">
+                  <button onClick={handlePrevReview} className="w-10 h-10 rounded-full border border-white/5 bg-black/10 hover:border-white/20 text-rustico/60 hover:text-rustico flex items-center justify-center transition-all"><ChevronLeft className="w-5 h-5" /></button>
+                  <button onClick={handleNextReview} className="w-10 h-10 rounded-full border border-white/5 bg-black/10 hover:border-white/20 text-rustico/60 hover:text-rustico flex items-center justify-center transition-all"><ChevronRight className="w-5 h-5" /></button>
+                </div>
+              </div>
+            </div>
+          </section>
+        </ScrollFadeIn>
 
         {/* 8. CTA FINAL */}
-        <section className="relative py-24 px-6 border-b border-white/[0.04] bg-black overflow-hidden flex items-center justify-center text-center">
-          <div className="absolute inset-0 z-0 overflow-hidden opacity-10">
-            <Image
-              src="https://images.unsplash.com/photo-1544025162-d76694265947"
-              alt="Churrasco Parrilla"
-              fill
-              sizes="100vw"
-              className="object-cover object-center"
-            />
-          </div>
-          <div className="relative z-10 max-w-3xl mx-auto flex flex-col gap-8 items-center">
-            <div className="inline-flex items-center gap-1 bg-tbbRed/10 border border-tbbRed/20 px-3 py-1 rounded text-tbbRed font-cinzel text-[10px] tracking-wider uppercase font-bold">
-              <Flame className="w-3.5 h-3.5 animate-pulse" /> FOME DE VERDADE?
+        <ScrollFadeIn direction="up" delay={0.05}>
+          <section className="relative py-24 px-6 border-b border-white/[0.04] bg-black overflow-hidden flex items-center justify-center text-center">
+            <div className="absolute inset-0 z-0 overflow-hidden opacity-10">
+              <Image src="https://images.unsplash.com/photo-1544025162-d76694265947" alt="Churrasco Parrilla" fill sizes="100vw" className="object-cover object-center" />
             </div>
-            <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl text-rustico font-black uppercase tracking-tight leading-none">
-              O SABOR DE VERDADE NO SEU BURGER
-            </h2>
-            <p className="font-sans-clean text-rustico/60 text-sm sm:text-base max-w-md">
-              Escolha seus favoritos, faça o seu pedido e receba o hambúrguer artesanal perfeito e quentinho na sua porta ou retire na unidade mais próxima.
-            </p>
-            <a
-              href={siteConfig.contact.whatsappLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 px-8 py-4 bg-tbbRed hover:bg-tbbRedDark text-rustico font-cinzel font-bold text-xs uppercase tracking-widest rounded shadow-[0_4px_20px_rgba(161,24,24,0.3)] transition-all duration-300 hover:scale-[1.02]"
-            >
-              Fazer Pedido no WhatsApp <ArrowRight className="w-4 h-4" />
-            </a>
-          </div>
-        </section>
+            <div className="relative z-10 max-w-3xl mx-auto flex flex-col gap-8 items-center">
+              <div className="inline-flex items-center gap-1 bg-tbbRed/10 border border-tbbRed/20 px-3 py-1 rounded text-tbbRed font-cinzel text-[10px] tracking-wider uppercase font-bold"><Flame className="w-3.5 h-3.5 animate-pulse" /> FOME DE VERDADE?</div>
+              <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl text-rustico font-black uppercase tracking-tight leading-none">O SABOR DE VERDADE NO SEU BURGER</h2>
+              <a href={siteConfig.contact.whatsappLink} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 px-8 py-4 bg-tbbRed hover:bg-tbbRedDark text-rustico font-cinzel font-bold text-xs uppercase tracking-widest rounded shadow-[0_4px_20px_rgba(161,24,24,0.3)] transition-all duration-300 hover:scale-[1.02]">Fazer Pedido no WhatsApp <ArrowRight className="w-4 h-4" /></a>
+            </div>
+          </section>
+        </ScrollFadeIn>
 
       </main>
 

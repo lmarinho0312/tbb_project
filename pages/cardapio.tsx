@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect, useRef } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -69,6 +69,23 @@ type TabType = 'classicos' | 'premium' | 'smashes' | 'parrilla' | 'combos' | 'ac
 export default function Cardapio() {
   const [activeTab, setActiveTab] = useState<TabType>('classicos');
   const [hoveredTab, setHoveredTab] = useState<string | null>(null);
+  const heroRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    let rafId: number;
+    const handleScroll = () => {
+      rafId = requestAnimationFrame(() => {
+        if (heroRef.current) {
+          const scrollY = window.scrollY;
+          heroRef.current.style.transform = `translateY(${scrollY * 0.22}px) scale(1.1)`;
+        }
+      });
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      cancelAnimationFrame(rafId);
+    };
+  }, []);
   const sparks = useSparks(6, hoveredTab);
   const [searchQuery, setSearchQuery] = useState('');
   const [isChatOpen, setIsChatOpen] = useState(false);
@@ -205,10 +222,11 @@ export default function Cardapio() {
       <Navbar activeSection="cardapio" />
 
       {/* Hero Header */}
-      <section className="relative pt-32 pb-16 flex items-center justify-center border-b border-white/[0.04]">
-        <div className="absolute inset-0 z-0 overflow-hidden bg-black/60">
-          <div className="absolute inset-0 bg-gradient-to-t from-carvao via-carvao/40 to-transparent" />
-        </div>
+      <section ref={heroRef} className="relative pt-32 pb-16 flex items-center justify-center border-b border-white/[0.04]">
+          <div className="absolute inset-0 z-0 overflow-hidden">
+            <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1544025162-d76694265947')] bg-cover bg-center opacity-[0.12] brightness-50"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-carvao via-transparent to-black/80" />
+          </div>
 
         <div className="relative z-10 max-w-4xl mx-auto text-center px-6 flex flex-col gap-4">
           <span className="font-cinzel text-tbbRed text-xs tracking-[0.25em] font-bold uppercase">
