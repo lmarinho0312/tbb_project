@@ -3,7 +3,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { Flame, Calculator, TrendingUp, CheckCircle, ArrowRight, Video, FileText, Sparkles, MessageCircle, Award, Cpu, ShieldAlert } from 'lucide-react';
+import { Flame, Calculator, TrendingUp, CheckCircle, ArrowRight, Video, FileText, Sparkles, MessageCircle, Award, Cpu, Shield } from 'lucide-react';
 import EmbersBackground from '../components/EmbersBackground';
 
 export default function TbbProposal() {
@@ -76,7 +76,7 @@ export default function TbbProposal() {
               <span className="text-[#A11818] drop-shadow-[0_0_15px_rgba(161,24,24,0.4)]">Receita Orgânica TBB</span>
             </h1>
             <p className="text-[#FAF9F6]/80 text-lg max-w-2xl mx-auto leading-relaxed">
-              Não se trata de construir um site institucional estático. Estamos abrindo um novo canal proprietário de vendas para o Grupo TBB, preparado para a nova era das buscas por Inteligência Artificial.
+              Estamos abrindo um novo canal proprietário de vendas para o Grupo TBB, preparado para a nova era das buscas por Inteligência Artificial.
             </p>
           </motion.div>
         </section>
@@ -130,16 +130,16 @@ export default function TbbProposal() {
 
           <div className="space-y-6 text-[#FAF9F6]/90 leading-relaxed text-base">
             <p>
-              O comportamento do cliente mudou. Hoje, as pessoas não procuram apenas no Google tradicional clicando em links azuis. Elas abrem o **ChatGPT, Gemini, Perplexity ou usam a busca por voz do celular** para fazer perguntas completas:
+              O comportamento do cliente mudou. Hoje, as pessoas não procuram apenas no Google tradicional clicando em links azuis. Elas abrem o ChatGPT, Gemini, Perplexity ou usam a busca por voz do celular para fazer perguntas completas:
             </p>
             <blockquote className="border-l-4 border-[#FFA000] bg-black/30 p-4 font-mono text-sm text-[#FFA000] rounded-r-lg">
               "Qual é o melhor restaurante premium com lareira acesa e parrilla para jantar em Teresópolis neste fim de semana?"
             </blockquote>
             <p>
-              Hoje, nenhum restaurante em Teresópolis está otimizado para aparecer como recomendação em buscas feitas via IA — vocês serão os primeiros.
+              Hoje, nenhum restaurante em Teresópolis está otimizado para aparecer como recomendação em buscas feitas via IA, e vocês serão os primeiros.
             </p>
             <p>
-              O site que programamos para o Grupo TBB não é apenas um folheto digital. Ele é um **conector de dados estruturados**. Ele serve como o motor técnico que garante que quando um turista ou morador fizer essa pergunta para uma IA, a única resposta recomendada na serra seja a TBB.
+              O site que programamos para o Grupo TBB não é apenas um folheto digital. Ele funciona como uma engrenagem que garante que quando alguém fizer essa pergunta para uma IA, a primeira opção recomendada seja a TBB.
             </p>
           </div>
         </section>
@@ -149,7 +149,7 @@ export default function TbbProposal() {
           <div className="flex items-center gap-3 mb-8">
             <Calculator className="w-8 h-8 text-[#FFA000]" />
             <div>
-              <h2 className="font-display text-2xl sm:text-3xl font-bold uppercase text-[#FFA000]">Simulador de Receita do Canal Orgânico</h2>
+              <h2 className="font-display text-2xl sm:text-3xl font-bold uppercase text-[#FFA000]">Simulador de Receita</h2>
               <p className="text-sm text-[#FAF9F6]/60">Estime o faturamento que o Grupo TBB deixa de capturar por não dominar este canal.</p>
             </div>
           </div>
@@ -172,7 +172,7 @@ export default function TbbProposal() {
                   onChange={(e) => setBuscas(Number(e.target.value))}
                   className="w-full h-2 bg-black/50 rounded-lg appearance-none cursor-pointer accent-[#A11818]"
                 />
-                <span className="text-xs text-[#FAF9F6]/40">(Volume estimado de buscas locais de gastronomia na serra)</span>
+                <span className="text-xs text-[#FAF9F6]/40">(Volume estimado de buscas locais)</span>
               </div>
 
               {/* Slider 2: Taxa de Conversão */}
@@ -190,7 +190,7 @@ export default function TbbProposal() {
                   onChange={(e) => setConversao(Number(e.target.value))}
                   className="w-full h-2 bg-black/50 rounded-lg appearance-none cursor-pointer accent-[#A11818]"
                 />
-                <span className="text-xs text-[#FAF9F6]/40">(Média inicial realista de conversão após a otimização)</span>
+                <span className="text-xs text-[#FAF9F6]/40">(Média inicial realista de conversão)</span>
               </div>
 
               {/* Slider 3: Ticket Médio */}
@@ -208,7 +208,7 @@ export default function TbbProposal() {
                   onChange={(e) => setTicket(Number(e.target.value))}
                   className="w-full h-2 bg-black/50 rounded-lg appearance-none cursor-pointer accent-[#A11818]"
                 />
-                <span className="text-xs text-[#FAF9F6]/40">(Com base nos cortes nobres de Parrilla e combos de burgers)</span>
+                <span className="text-xs text-[#FAF9F6]/40">(Com base nos cortes de Parrilla e combos de burgers)</span>
               </div>
             </div>
 
@@ -230,7 +230,7 @@ export default function TbbProposal() {
                   {formatarMoeda(faturamentoMensal)}
                 </div>
                 <span className="text-[10px] text-[#FAF9F6]/40 block mt-3 leading-relaxed">
-                  *Estimativa baseada em volume de busca local. Resultados reais dependem da execução e adoção do canal.
+                  Estimativa baseada em volume de busca local.
                 </span>
               </div>
             </div>
@@ -238,7 +238,7 @@ export default function TbbProposal() {
 
           <div className="mt-8 pt-6 border-t border-[#FAF9F6]/10 text-sm text-[#FAF9F6]/70 leading-relaxed">
             <TrendingUp className="w-5 h-5 inline-block text-[#FFA000] mr-2" />
-            **Como essa engrenagem funciona na prática?** Ao criar o conector de dados correto e otimizar para busca tradicional e por inteligência artificial, você cria uma fonte de aquisição direta que leva o cliente até o seu site, permitindo reservas sem intermediários e vendas de delivery sem taxas de terceiros.
+            Como essa engrenagem funciona na prática? Ao otimizar a presença digital de vocês para buscas tradicionais e por inteligência artificial, vocês geram mais vendas diretas, permitindo reservas sem intermediários e entregas de delivery sem taxas extras de plataformas de terceiros.
           </div>
         </section>
 
@@ -298,25 +298,54 @@ export default function TbbProposal() {
             </div>
           </div>
           
-          <div className="mt-8 text-center text-sm text-[#FAF9F6]/60 bg-[#1C1610] border border-[#FAF9F6]/10 px-4 py-3 rounded-lg max-w-xl mx-auto">
-            💡 **O protótipo é flexível:** Qualquer texto, imagem, cor ou seção pode ser alterado conforme a preferência de vocês.
+          <div className="mt-12 bg-gradient-to-r from-[#1C1610] to-[#120F0C] border-2 border-dashed border-[#FFA000]/30 rounded-2xl p-8 text-center max-w-2xl mx-auto shadow-xl">
+            <Sparkles className="w-8 h-8 text-[#FFA000] mx-auto mb-4" />
+            <h3 className="font-display text-xl font-bold uppercase text-[#FFA000] mb-2">Protótipo Totalmente Flexível</h3>
+            <p className="text-sm sm:text-base text-[#FAF9F6]/80 leading-relaxed">
+              Todo o design, cores, textos, imagens e seções apresentados aqui são apenas o ponto de partida. Qualquer alteração ou ajuste que vocês decidirem fazer para alinhar com o gosto da equipe será realizado. Este canal pertence ao Grupo TBB.
+            </p>
           </div>
         </section>
 
-        {/* Bônus do TripAdvisor */}
-        <section className="mb-12 bg-gradient-to-r from-[#1C1610] to-[#2C241B] border border-[#FFA000]/30 rounded-2xl p-8 shadow-2xl relative overflow-hidden">
-          <div className="absolute top-0 right-0 px-3 py-1 bg-[#FFA000] text-black font-bold text-xs uppercase tracking-widest rounded-bl-lg">
-            Bônus Exclusivo
-          </div>
-          <div className="flex gap-4 items-start">
-            <Award className="w-10 h-10 text-[#FFA000] shrink-0 mt-1" />
-            <div>
-              <h3 className="font-display text-xl sm:text-2xl font-bold uppercase text-[#FFA000] mb-2">
-                Configuração & Otimização do TripAdvisor
-              </h3>
-              <p className="text-sm sm:text-base text-[#FAF9F6]/80 leading-relaxed">
-                Teresópolis é um polo de turismo gastronômico muito forte. Para capturar todos os visitantes e turistas que sobem a serra nos fins de semana, nós faremos a **configuração e a otimização completa do perfil do Grupo TBB no TripAdvisor** de forma 100% gratuita como bônus pela nossa parceria.
-              </p>
+        {/* Seção de Bônus Exclusivos */}
+        <section className="mb-12 space-y-6">
+          <h2 className="font-display text-2xl sm:text-3xl font-bold uppercase text-center mb-6">Bônus Exclusivos de Parceria</h2>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {/* Bônus 1: TripAdvisor */}
+            <div className="bg-gradient-to-br from-[#1C1610] to-[#2C241B] border border-[#FFA000]/30 rounded-2xl p-6 shadow-2xl relative overflow-hidden">
+              <div className="absolute top-0 right-0 px-2 py-0.5 bg-[#FFA000] text-black font-bold text-[9px] uppercase tracking-widest rounded-bl-lg">
+                Bônus 1
+              </div>
+              <div className="flex gap-4 items-start">
+                <Award className="w-8 h-8 text-[#FFA000] shrink-0 mt-1" />
+                <div>
+                  <h3 className="font-display text-lg font-bold uppercase text-[#FFA000] mb-2">
+                    Configuração & Otimização do TripAdvisor
+                  </h3>
+                  <p className="text-xs text-[#FAF9F6]/80 leading-relaxed">
+                    Teresópolis é um polo de turismo gastronômico muito forte. Para capturar todos os visitantes e turistas que sobem a serra nos fins de semana, faremos a configuração e a otimização completa do perfil do Grupo TBB no TripAdvisor sem custo adicional.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Bônus 2: Hospedagem Grátis */}
+            <div className="bg-gradient-to-br from-[#120F0C] to-[#1C1610] border border-[#A11818]/30 rounded-2xl p-6 shadow-2xl relative overflow-hidden">
+              <div className="absolute top-0 right-0 px-2 py-0.5 bg-[#A11818] text-white font-bold text-[9px] uppercase tracking-widest rounded-bl-lg">
+                Bônus 2
+              </div>
+              <div className="flex gap-4 items-start">
+                <Shield className="w-8 h-8 text-[#A11818] shrink-0 mt-1" />
+                <div>
+                  <h3 className="font-display text-lg font-bold uppercase text-[#FAF9F6] mb-2">
+                    1 Ano de Hospedagem Profissional Grátis
+                  </h3>
+                  <p className="text-xs text-[#FAF9F6]/80 leading-relaxed">
+                    Para que vocês não tenham que se preocupar com custos extras de servidores ou infraestrutura, cobrimos 100% da hospedagem profissional de alta performance nos primeiros 12 meses.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -364,7 +393,7 @@ export default function TbbProposal() {
             Investimento Único · Sem Mensalidades · 1 Ano de Hospedagem Grátis
           </span>
           <p className="text-xs text-[#FAF9F6]/60 italic max-w-lg mx-auto border-t border-[#FAF9F6]/10 pt-4 mt-2">
-            *Protótipo completo e pronto para ativação. Ajustes finais — como inserção de fotos e pequenas personalizações — são realizados em até 2 dias úteis após o fechamento.
+            Protótipo completo e pronto para ativação. Ajustes finais, como inserção de fotos e pequenas personalizações, são realizados em até 2 dias úteis após o fechamento.
           </p>
         </section>
       </main>
