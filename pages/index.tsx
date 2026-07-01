@@ -260,74 +260,11 @@ export default function Home() {
       { "@type": "LocationFeatureSpecification", "name": "Estacionamento", "value": true },
       { "@type": "LocationFeatureSpecification", "name": "Delivery", "value": true }
     ],
-    "review": [
-      {
-        "@type": "Review",
-        "author": { "@type": "Person", "name": "Lucas R." },
-        "datePublished": "2026-05-15",
-        "reviewBody": "Melhor burger que já comi! Carne no ponto perfeito e aquele sabor único que só a T.B.B tem. Simplesmente incrível!",
-        "reviewRating": {
-          "@type": "Rating",
-          "ratingValue": "5",
-          "bestRating": "5"
-        }
-      },
-      {
-        "@type": "Review",
-        "author": { "@type": "Person", "name": "Mariana Souza" },
-        "datePublished": "2026-05-20",
-        "reviewBody": "Sempre tive problemas com lanches que chegavam frios. Pedi o Combo Casal e chegou muito quente, queijo derretido e o sabor é simplesmente maravilhoso!",
-        "reviewRating": {
-          "@type": "Rating",
-          "ratingValue": "5",
-          "bestRating": "5"
-        }
-      },
-      {
-        "@type": "Review",
-        "author": { "@type": "Person", "name": "Rodrigo Alves" },
-        "datePublished": "2026-05-28",
-        "reviewBody": "O hambúrguer artesanal tem outro nível de sabor. A maionese defumada com o clássico na chapa é sensacional. Chegou super rápido.",
-        "reviewRating": {
-          "@type": "Rating",
-          "ratingValue": "5",
-          "bestRating": "5"
-        }
-      },
-      {
-        "@type": "Review",
-        "author": { "@type": "Person", "name": "Carlos M." },
-        "datePublished": "2026-06-02",
-        "reviewBody": "Melhor burger de Teresópolis. Carne suculenta, pão macio e entrega rápida e no prazo.",
-        "reviewRating": {
-          "@type": "Rating",
-          "ratingValue": "5",
-          "bestRating": "5"
-        }
-      },
-      {
-        "@type": "Review",
-        "author": { "@type": "Person", "name": "Amanda K." },
-        "datePublished": "2026-06-10",
-        "reviewBody": "O espaço kids da unidade Vale do Paraíso é excelente e a Costela Grill é deliciosa. Super recomendo para famílias!",
-        "reviewRating": {
-          "@type": "Rating",
-          "ratingValue": "5",
-          "bestRating": "5"
-        }
-      },
-      {
-        "@type": "Review",
-        "author": { "@type": "Person", "name": "Bruno F." },
-        "datePublished": "2026-06-15",
-        "reviewBody": "Os smashes são sensacionais. O pão brioche é super macio e a maionese temperada é a melhor. O atendimento da equipe é excelente!",
-        "reviewRating": {
-          "@type": "Rating",
-          "ratingValue": "5",
-          "bestRating": "5"
-        }
-      }
-    ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "reviewCount": "320"
+    },
     "department": [
       {
         "@type": "LocalBusiness",
@@ -446,7 +383,7 @@ export default function Home() {
                 </h1>
 
                 <p className="font-dm-serif-italic text-xl lg:text-2xl text-brasa/90 -mt-2">
-                  10 anos de tradição e sabor na serra.
+                  11 anos de tradição e sabor na serra.
                 </p>
 
                 <p className="font-sans-clean text-sm sm:text-base text-rustico/70 leading-relaxed max-w-lg">
@@ -507,7 +444,7 @@ export default function Home() {
                   <Award className="w-5 h-5" />
                 </div>
                 <div>
-                  <h3 className="font-cinzel text-xs font-bold tracking-widest text-rustico uppercase">10 ANOS NA SERRA</h3>
+                  <h3 className="font-cinzel text-xs font-bold tracking-widest text-rustico uppercase">11 ANOS NA SERRA</h3>
                   <p className="font-sans-clean text-[11px] text-rustico/50 mt-1">Legítima hamburgueria artesanal de Teresópolis.</p>
                 </div>
               </div>

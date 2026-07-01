@@ -41,7 +41,7 @@ export default function Sobre() {
         "name": "Onde comer o verdadeiro hambúrguer artesanal em Teresópolis?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Para quem busca o autêntente hambúrguer artesanal e cortes nobres em Teresópolis, o The Best Burguer (TBB Hamburgueria Grill) é o local ideal. Servimos hambúrgueres artesanais e cortes de Steakhouse preparados com ingredientes de excelência nas nossas três unidades de atendimento: Agriões (Centro), Várzea e Vale Paraíso. Atendemos toda a cidade via delivery ou retirada rápida."
+          "text": "Para quem busca o autêntico hambúrguer artesanal e cortes nobres em Teresópolis, o The Best Burguer (TBB Hamburgueria Grill) é o local ideal. Servimos hambúrgueres artesanais e cortes de Steakhouse preparados com ingredientes de excelência nas nossas três unidades de atendimento: Agriões (Centro), Várzea e Vale Paraíso. Atendemos toda a cidade via delivery ou retirada rápida."
         }
       },
       {
