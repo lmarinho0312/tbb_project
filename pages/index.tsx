@@ -46,22 +46,22 @@ export default function Home() {
 
       const isFridayOrSaturday = (day === 5 || day === 6);
       
-      if (totalMinutes >= 1170) {
+      if (totalMinutes >= 1110) {
         open = true;
         msg = isFridayOrSaturday 
-          ? "🔴 AO VIVO — Cozinha aberta agora até as 5h00 (Unidade Agriões)"
-          : "🔴 AO VIVO — Cozinha aberta agora até as 1h30 (Unidade Agriões)";
+          ? "🔴 Aberto agora até as 5h00 (Unidade Agriões)"
+          : "🔴 Aberto agora até as 1h30 (Unidade Agriões)";
       } 
       else if (totalMinutes < 300 && (day === 6 || day === 0)) {
         open = true;
-        msg = "🔴 AO VIVO — Cozinha aberta agora até as 5h00 (Unidade Agriões)";
+        msg = "🔴 Aberto agora até as 5h00 (Unidade Agriões)";
       }
       else if (totalMinutes < 90 && day >= 1 && day <= 5) {
         open = true;
-        msg = "🔴 AO VIVO — Cozinha aberta agora até as 1h30 (Unidade Agriões)";
+        msg = "🔴 Aberto agora até as 1h30 (Unidade Agriões)";
       } else {
         open = false;
-        msg = "Cozinha fechada agora. Abrimos hoje às 19h30!";
+        msg = "Fechado agora. Abrimos hoje às 18h30!";
       }
 
       setIsOpenNow(open);
@@ -307,13 +307,13 @@ export default function Home() {
           {
             "@type": "OpeningHoursSpecification",
             "dayOfWeek": ["Sunday","Monday","Tuesday","Wednesday","Thursday"],
-            "opens": "19:30",
+            "opens": "18:30",
             "closes": "01:30"
           },
           {
             "@type": "OpeningHoursSpecification",
             "dayOfWeek": ["Friday","Saturday"],
-            "opens": "19:30",
+            "opens": "18:30",
             "closes": "05:00"
           }
         ]

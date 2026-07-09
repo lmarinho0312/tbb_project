@@ -19,7 +19,7 @@ export const siteConfig = {
     {
       name: "Unidade Agriões",
       address: "Rua Nova Friburgo, nº 47, Centro, Teresópolis - RJ",
-      hours: "Dom a Qui: 19h30 às 1h30 | Sex e Sáb: 19h30 às 5h00",
+      hours: "Dom a Qui: 18h30 às 1h30 | Sex e Sáb: 18h30 às 5h00",
       details: "Cozinha e salão funcionando até mais tarde nas sextas e sábados.",
       whatsappLink: "https://wa.me/5521971333919?text=Ol%C3%A1%21+Quero+fazer+um+pedido+para+a+unidade+Agri%C3%B5es+da+TBB%21",
       badges: ["Pet Friendly", "Madrugada até 5h"]

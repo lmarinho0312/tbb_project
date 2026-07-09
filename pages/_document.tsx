@@ -5,12 +5,12 @@ export default function Document() {
     <Html lang="pt-BR" className="scroll-smooth">
       <Head>
         <meta charSet="utf-8" />
+        {/* Preconnect para fontes (next/font carrega automaticamente — apenas por segurança) */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Anton&family=Cinzel:wght@400;600;700;900&family=DM+Serif+Display:ital@0;1&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Kaushan+Script&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-          rel="stylesheet"
-        />
+        {/* Preconnect para imagens Unsplash — economia de ~300ms no LCP */}
+        <link rel="preconnect" href="https://images.unsplash.com" crossOrigin="anonymous" />
+        {/* ⚠️ O link de fontes foi REMOVIDO — fontes agora carregam via next/font sem bloquear render */}
         <link rel="icon" href="/favicon.ico" />
         {/* Fallback do favicon e apple touch icon */}
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />

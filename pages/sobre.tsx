@@ -49,7 +49,7 @@ export default function Sobre() {
         "name": "Quais são as três unidades da The Best Burguer e seus horários?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Temos três unidades prontas para lhe atender: 1) Agriões (Rua Nova Friburgo, Centro), funcionando de domingo a quinta das 19h30 à 1h30, e sextas/sábados das 19h30 até as 5h da manhã. 2) Várzea (Rua Nilza Chiapetta Fadigas, 596), funcionando de segunda a sábado das 18h20 às 23h20. 3) Vale Paraíso (Avenida Delfim Moreira, 2265), funcionando todos os dias das 17h às 0h."
+          "text": "Temos três unidades prontas para lhe atender: 1) Agriões (Rua Nova Friburgo, Centro), funcionando de domingo a quinta das 18h30 à 1h30, e sextas/sábados das 18h30 até as 5h da manhã. 2) Várzea (Rua Nilza Chiapetta Fadigas, 596), funcionando de segunda a sábado das 18h20 às 23h20. 3) Vale Paraíso (Avenida Delfim Moreira, 2265), funcionando todos os dias das 17h às 0h."
         }
       },
       {
@@ -57,7 +57,7 @@ export default function Sobre() {
         "name": "A The Best Burguer faz entregas na madrugada em Teresópolis?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Sim! A nossa unidade de Agriões funciona nas sextas e sábados das 19h30 até às 5h da manhã, sendo a melhor opção na cidade para matar sua fome de hambúrguer artesanal durante a madrugada."
+          "text": "Sim! A nossa unidade de Agriões funciona nas sextas e sábados das 18h30 até às 5h da manhã, sendo a melhor opção na cidade para matar sua fome de hambúrguer artesanal durante a madrugada."
         }
       },
       {
