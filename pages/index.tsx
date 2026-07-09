@@ -498,8 +498,8 @@ export default function Home() {
                   <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-20 pointer-events-none" />
                   <div className="absolute inset-y-0 left-0 w-1/4 z-20 cursor-w-resize" onClick={handlePrevSlide} />
                   <div className="absolute inset-y-0 right-0 w-1/4 z-20 cursor-e-resize" onClick={handleNextSlide} />
-                  <div className="relative w-full h-full">
-                    <Image src={screenshots[activeImageIndex].src} alt={screenshots[activeImageIndex].alt} fill sizes="(max-width: 640px) 100vw, 384px" className="object-cover pointer-events-none" priority />
+                  <div className="relative w-full h-full bg-black/95">
+                    <Image src={screenshots[activeImageIndex].src} alt={screenshots[activeImageIndex].alt} fill sizes="(max-width: 640px) 100vw, 384px" className="object-contain pointer-events-none" priority />
                   </div>
                   <div className="absolute bottom-5 inset-x-5 z-30 flex flex-col gap-2">
                     <span className="font-cinzel text-[9px] text-tbbRed tracking-widest font-black uppercase">@tbbhamburgueriaoficial</span>
