@@ -589,7 +589,7 @@ export default function Home() {
                     </div>
                     <div className="w-full h-px border-t border-dashed border-white/[0.06] my-4" />
                     <div className="flex flex-col flex-1 justify-end">
-                      <h4 className="font-display text-sm text-rustico uppercase tracking-wider font-black mb-1.5" style={{ transform: 'translateZ(15px)' }}>{promo.title}</h4>
+                      <h3 className="font-display text-sm text-rustico uppercase tracking-wider font-black mb-1.5" style={{ transform: 'translateZ(15px)' }}>{promo.title}</h3>
                       <p className="font-sans-clean text-[10px] text-rustico/50 leading-relaxed" style={{ transform: 'translateZ(10px)' }}>{promo.copy}</p>
                     </div>
                   </TiltCard>
@@ -697,7 +697,7 @@ export default function Home() {
             <div className="max-w-5xl mx-auto flex flex-col gap-12 items-center text-center">
               <div className="flex flex-col items-center gap-2">
                 <span className="font-cinzel text-tbbRed text-[11px] tracking-[0.2em] font-bold uppercase">AVALIAÇÕES REAIS</span>
-                <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl text-rustico font-black uppercase tracking-tight">QUEM PROVA, NÃO TEM DUVIDAS</h2>
+                <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl text-rustico font-black uppercase tracking-tight">QUEM PROVA, NÃO TEM DÚVIDAS</h2>
               </div>
               <div className="relative w-full max-w-3xl mx-auto py-6 px-4">
                 <AnimatePresence mode="wait">

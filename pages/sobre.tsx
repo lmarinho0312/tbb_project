@@ -385,9 +385,9 @@ export default function Sobre() {
                 <div className="w-10 h-10 rounded-full bg-tbbRed/10 border border-tbbRed/20 flex items-center justify-center mx-auto text-tbbRed">
                   <Heart className="w-5 h-5" />
                 </div>
-                <h4 className="font-display text-base text-rustico uppercase tracking-wider font-bold">
+                <h3 className="font-display text-base text-rustico uppercase tracking-wider font-bold">
                   {member.name}
-                </h4>
+                </h3>
                 <p className="font-sans-clean text-[11px] text-rustico/50 leading-relaxed">
                   {member.description}
                 </p>

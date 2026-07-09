@@ -234,6 +234,7 @@ export default function Unidades() {
                       href={loc.whatsappLink}
                       target="_blank"
                       rel="noopener noreferrer"
+                      aria-label={`Pedir no WhatsApp da unidade ${loc.name}`}
                       className="w-full inline-flex items-center justify-center gap-2 py-3 bg-tbbRed hover:bg-tbbRedHover text-rustico font-cinzel font-bold text-[11px] uppercase tracking-widest rounded shadow-glow-tbbRed hover:scale-[1.02] active:scale-95 transition-all duration-300"
                     >
                       <span>Pedir nesta Unidade</span>
