@@ -122,12 +122,12 @@ export default function Sobre() {
   const videoSchema = useMemo(() => ({
     "@context": "https://schema.org",
     "@type": "VideoObject",
-    "name": "Como a TBB prepara seus hambúrgueres artesanais em Teresópolis",
-    "description": "Bastidores da TBB Hamburgueria Grill em Teresópolis: do blend à montagem perfeita.",
-    "thumbnailUrl": "https://thebestburguer.com.br/fotos/tbb-hero.webp",
-    "uploadDate": "2026-01-01T08:00:00Z",
-    "contentUrl": "https://www.youtube.com/watch?v=KxH_2fQY_D8",
-    "embedUrl": "https://www.youtube.com/embed/KxH_2fQY_D8"
+    "name": "TBB Hamburgueria Grill na Super Rio Expofood",
+    "description": "Gabriel, Pedro e Chef Mateus representando a TBB na Super Rio Expofood buscando inovação e tendências gastronômicas.",
+    "thumbnailUrl": "https://thebestburguer.com.br/fotos/sobre-og.webp",
+    "uploadDate": "2025-03-18T12:00:00Z",
+    "contentUrl": "https://www.instagram.com/p/DWHMr2LDmuo/",
+    "embedUrl": "https://www.instagram.com/p/DWHMr2LDmuo/embed"
   }), []);
 
   // Timeline de marcos históricos
@@ -159,31 +159,25 @@ export default function Sobre() {
     }
   ];
 
-  // Membros da família
   const familyMembers = [
     {
       name: "Luciane",
-      role: "Pilar Materno",
       description: "Garante com amor, cuidado e carinho incansável o funcionamento perfeito dos bastidores de todas as unidades."
     },
     {
       name: "Pedro",
-      role: "Planejamento & Estrutura",
       description: "Cofundador dedicado, responsável por gerenciar a estrutura das lojas e garantir a solidez da expansão da marca."
     },
     {
       name: "Gabriel",
-      role: "Direção Geral & Operações",
       description: "Foco nos clientes e no padrão operacional. Garante a sintonia perfeita da equipe no atendimento e na entrega."
     },
     {
       name: "Chef Mateus",
-      role: "Culinária & Mestre de Blends",
-      description: "Formulado especial dos temperos, blends de carne na parrilla e pratos do almoço executivo que conquistaram a serra."
+      description: "Responsável pela formulação especial dos temperos, blends de carne na parrilla e pratos do almoço executivo que conquistaram a serra."
     },
     {
       name: "Lucas",
-      role: "Eventos & Conexão",
       description: "Responsável por promover eventos marcantes de aniversário, apoios esportivos e comunicação com nossos seguidores."
     }
   ];
@@ -340,19 +334,18 @@ export default function Sobre() {
       {/* Vídeo / Visual Brasa */}
       <section className="py-16 px-6 relative bg-black/20 border-t border-b border-white/[0.04]">
         <div className="max-w-5xl mx-auto flex flex-col lg:flex-row items-center gap-12">
-          {/* Vídeo Real (YouTube Iframe) */}
-          <div className="w-full lg:w-1/2">
-            <div className="relative rounded overflow-hidden border border-white/[0.06] shadow-[0_8px_48px_rgba(0,0,0,0.7)] aspect-[16/9]">
+          {/* Vídeo Real (Instagram Reel Embed) */}
+          <div className="w-full lg:w-1/2 flex justify-center">
+            <div className="relative w-full max-w-[340px] h-[500px] rounded-2xl overflow-hidden border border-white/[0.06] shadow-[0_8px_48px_rgba(0,0,0,0.7)] bg-[#120E0A]">
               <iframe
+                src="https://www.instagram.com/p/DWHMr2LDmuo/embed"
                 width="100%"
                 height="100%"
-                src="https://www.youtube.com/embed/KxH_2fQY_D8"
-                title="Como a TBB prepara seus hambúrgueres artesanais em Teresópolis"
                 frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-                className="w-full h-full absolute inset-0"
-              ></iframe>
+                scrolling="no"
+                className="w-full h-full"
+                title="TBB na Super Rio Expofood"
+              />
             </div>
           </div>
 
@@ -363,7 +356,7 @@ export default function Sobre() {
               SUPER RIO EXPOFOOD
             </h3>
             <p className="font-sans-clean text-xs sm:text-sm text-rustico/60 leading-relaxed">
-              Viajamos anualmente para a Super Rio Expofood, um dos maiores eventos do setor alimentício da América Latina. Nosso objetivo é buscar inovação gastronômica, novas técnicas de parrilla e cortes nobres na serra fluminense e ferramentas tecnológicas para otimizar nosso atendimento.
+              Viajamos anualmente para a Super Rio Expofood, um dos maiores eventos do setor alimentício da América Latina. Nosso objetivo é trazer inovação gastronômica, novas técnicas de parrilla, cortes nobres para a Região Serrana e ferramentas tecnológicas para otimizar nosso atendimento.
             </p>
             <p className="font-sans-clean text-xs sm:text-sm text-rustico/60 leading-relaxed">
               Dessa forma, unimos o acolhimento clássico de uma cozinha de família com a agilidade que a tecnologia moderna nos entrega para servir você cada vez melhor.
@@ -395,9 +388,6 @@ export default function Sobre() {
                 <h4 className="font-display text-base text-rustico uppercase tracking-wider font-bold">
                   {member.name}
                 </h4>
-                <span className="font-cinzel text-[8px] text-brasa tracking-widest uppercase font-bold">
-                  {member.role}
-                </span>
                 <p className="font-sans-clean text-[11px] text-rustico/50 leading-relaxed">
                   {member.description}
                 </p>

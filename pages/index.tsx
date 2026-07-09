@@ -24,6 +24,10 @@ export default function Home() {
   const [activeReview, setActiveReview] = useState(0);
   const [isChatOpen, setIsChatOpen] = useState(false);
 
+  const mapUrls = useMemo(() => siteConfig.locations.map((loc) =>
+    `https://maps.google.com/maps?q=${encodeURIComponent(loc.address + ', Teresópolis, RJ, Brasil')}&output=embed&hl=pt-BR`
+  ), []);
+
   // ── COZINHA STATUS (CRO) ──
   const [isOpenNow, setIsOpenNow] = useState(false);
   const [openingMessage, setOpeningMessage] = useState("");
@@ -73,6 +77,28 @@ export default function Home() {
   const [activeImageIndex, setActiveImageIndex] = useState(0);
   const [progress, setProgress] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [isInView, setIsInView] = useState(false);
+  const storiesSectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsInView(entry.isIntersecting);
+      },
+      { threshold: 0.15 }
+    );
+
+    if (storiesSectionRef.current) {
+      observer.observe(storiesSectionRef.current);
+    }
+
+    return () => {
+      if (storiesSectionRef.current) {
+        observer.unobserve(storiesSectionRef.current);
+      }
+    };
+  }, []);
 
   // ── Parallax na Hero ──
   const heroImageRef = useRef<HTMLDivElement>(null);
@@ -115,7 +141,7 @@ export default function Home() {
 
   // Efeito do temporizador do Stories
   useEffect(() => {
-    if (isPaused) return;
+    if (isPaused || !isInView) return;
 
     const intervalTime = 40;
     const totalDuration = 4000;
@@ -132,7 +158,7 @@ export default function Home() {
     }, intervalTime);
 
     return () => clearInterval(timer);
-  }, [activeImageIndex, isPaused]);
+  }, [activeImageIndex, isPaused, isInView]);
 
   useEffect(() => {
     setProgress(0);
@@ -418,7 +444,7 @@ export default function Home() {
                     className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-4 bg-transparent border border-rustico/20 hover:border-brasa/40 text-rustico hover:text-brasa font-cinzel font-bold text-xs uppercase tracking-[0.15em] rounded transition-all duration-300"
                   >
                     <WhatsAppIcon className="w-5 h-5 shrink-0" />
-                    WHATSAPP DIRECT
+                    WHATSAPP
                   </a>
                 </div>
               </div>
@@ -472,7 +498,7 @@ export default function Home() {
 
         {/* 3. STORIES INLINE */}
         <ScrollFadeIn direction="left">
-          <section id="highlights" className="py-24 px-6 border-b border-white/[0.04] relative bg-black/10">
+          <section ref={storiesSectionRef} id="highlights" className="py-24 px-6 border-b border-white/[0.04] relative bg-black/10">
             <div className="max-w-5xl mx-auto flex flex-col gap-10 items-center text-center">
               <div className="flex flex-col items-center gap-3">
                 <span className="font-cinzel text-tbbRed text-[11px] tracking-[0.2em] font-bold uppercase">DIÁRIO TBB</span>
@@ -482,15 +508,11 @@ export default function Home() {
               </div>
 
               <div className="flex items-center justify-center gap-4 lg:gap-8 w-full max-w-5xl mx-auto py-2">
-                <button onClick={handlePrevSlide} className="w-12 h-12 rounded-full border border-white/10 hover:border-white/30 hover:bg-white/[0.03] flex items-center justify-center text-rustico/75 hover:text-rustico transition-all hidden md:flex shrink-0">
-                  <ChevronLeft className="w-6 h-6" />
-                </button>
-
-                <div className="relative w-full max-w-sm aspect-[9/16] rounded-xl overflow-hidden border border-white/[0.06] shadow-[0_12px_48px_rgba(0,0,0,0.8)] cursor-pointer select-none" onMouseDown={() => setIsPaused(true)} onMouseUp={() => setIsPaused(false)} onTouchStart={() => setIsPaused(true)} onTouchEnd={() => setIsPaused(false)}>
+                <div className="relative w-full max-w-sm aspect-[3/4] rounded-xl overflow-hidden border border-white/[0.06] shadow-[0_12px_48px_rgba(0,0,0,0.8)] cursor-pointer select-none" onMouseDown={() => setIsPaused(true)} onMouseUp={() => setIsPaused(false)} onTouchStart={() => setIsPaused(true)} onTouchEnd={() => setIsPaused(false)}>
                   <div className="absolute top-3 inset-x-4 z-30 flex gap-1">
                     {screenshots.map((_, idx) => (
                       <div key={idx} className="flex-1 h-1 bg-white/20 rounded-full overflow-hidden">
-                        <div className="h-full bg-white transition-all duration-[40ms] ease-linear" style={{ width: idx === activeImageIndex ? `${progress}%` : idx < activeImageIndex ? '100%' : '0%' }} />
+                        <div className={`h-full bg-white ${idx === activeImageIndex && progress > 0 ? 'transition-all duration-[40ms] ease-linear' : ''}`} style={{ width: idx === activeImageIndex ? `${progress}%` : idx < activeImageIndex ? '100%' : '0%' }} />
                       </div>
                     ))}
                   </div>
@@ -501,15 +523,25 @@ export default function Home() {
                   <div className="relative w-full h-full bg-black/95">
                     <Image src={screenshots[activeImageIndex].src} alt={screenshots[activeImageIndex].alt} fill sizes="(max-width: 640px) 100vw, 384px" className="object-contain pointer-events-none" priority />
                   </div>
-                  <div className="absolute bottom-5 inset-x-5 z-30 flex flex-col gap-2">
-                    <span className="font-cinzel text-[9px] text-tbbRed tracking-widest font-black uppercase">@tbbhamburgueriaoficial</span>
-                    <p className="font-sans-clean text-xs text-rustico/90 font-bold leading-normal">{screenshots[activeImageIndex].alt}</p>
-                  </div>
-                </div>
 
-                <button onClick={handleNextSlide} className="w-12 h-12 rounded-full border border-white/10 hover:border-white/30 hover:bg-white/[0.03] flex items-center justify-center text-rustico/75 hover:text-rustico transition-all hidden md:flex shrink-0">
-                  <ChevronRight className="w-6 h-6" />
-                </button>
+                  {/* Seta Esquerda Discreta */}
+                  <button
+                    onClick={handlePrevSlide}
+                    className="absolute left-3 top-1/2 -translate-y-1/2 z-30 w-8 h-8 rounded-full bg-black/40 hover:bg-black/60 border border-white/10 text-white/70 hover:text-white flex items-center justify-center transition-all backdrop-blur-sm active:scale-90"
+                    aria-label="Slide anterior"
+                  >
+                    <ChevronLeft className="w-4 h-4" />
+                  </button>
+
+                  {/* Seta Direita Discreta */}
+                  <button
+                    onClick={handleNextSlide}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 z-30 w-8 h-8 rounded-full bg-black/40 hover:bg-black/60 border border-white/10 text-white/70 hover:text-white flex items-center justify-center transition-all backdrop-blur-sm active:scale-90"
+                    aria-label="Próximo slide"
+                  >
+                    <ChevronRight className="w-4 h-4" />
+                  </button>
+                </div>
               </div>
             </div>
           </section>
@@ -567,35 +599,94 @@ export default function Home() {
           </section>
         </ScrollFadeIn>
 
-        {/* 6. NOSSAS UNIDADES */}
+        {/* 6. UNIDADES E LOCALIZAÇÃO (UNIFICADA - GRID DE 3 COLUNAS) */}
         <ScrollFadeIn direction="right">
-          <section className="py-24 px-6 border-b border-white/[0.04] relative">
-            <div className="max-w-6xl mx-auto flex flex-col gap-12">
+          <section id="unidades" className="py-24 px-6 border-b border-white/[0.04] relative">
+            <div className="max-w-7xl mx-auto flex flex-col gap-12">
               <div className="flex flex-col items-center text-center gap-3">
-                <span className="font-cinzel text-tbbRed text-[11px] tracking-[0.2em] font-bold uppercase">VENHA NOS VISITAR</span>
-                <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl text-rustico font-black uppercase tracking-tight">UNIDADES</h2>
+                <span className="font-cinzel text-tbbRed text-[11px] tracking-[0.2em] font-bold uppercase">COMO NOS ENCONTRAR</span>
+                <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl text-rustico font-black uppercase tracking-tight leading-none">
+                  Três endereços, qualidade única.
+                </h2>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                {siteConfig.locations.map((loc) => (
-                  <div key={loc.name} className="p-6 bg-white/[0.01] border border-white/[0.05] hover:border-white/10 rounded-lg flex flex-col gap-4 transition-all duration-300 justify-between">
-                    <div className="flex flex-col gap-3">
-                      <h3 className="font-display text-xl text-rustico uppercase tracking-wide font-black">{loc.name}</h3>
-                      <div className="flex flex-wrap gap-1">
+
+              {/* Grid de 3 Colunas */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {siteConfig.locations.map((loc, i) => (
+                  <div key={loc.name} className="p-6 bg-white/[0.01] border border-white/[0.05] rounded-2xl flex flex-col gap-5 justify-between">
+                    <div className="flex flex-col gap-4">
+                      {/* Nome e Detalhes */}
+                      <div>
+                        <h3 className="font-display text-xl text-rustico uppercase tracking-wider font-black">
+                          {loc.name}
+                        </h3>
+                        <p className="font-sans-clean text-xs text-rustico/50 mt-1 italic leading-relaxed">
+                          {loc.details}
+                        </p>
+                      </div>
+
+                      {/* Características/Badges */}
+                      <div className="flex flex-wrap gap-1.5">
                         {loc.badges?.map((badge) => (
-                          <span key={badge} className="px-2 py-0.5 bg-white/[0.03] border border-white/[0.05] rounded text-[8px] font-cinzel uppercase tracking-widest text-rustico/60">
+                          <span key={badge} className="px-2 py-0.5 bg-white/[0.03] border border-white/[0.05] rounded text-[8px] font-cinzel uppercase tracking-widest text-rustico/65 flex items-center gap-1">
                             {getBadgeIcon(badge)} {badge}
                           </span>
                         ))}
                       </div>
-                      <div className="flex flex-col gap-2 mt-4 text-xs font-sans-clean text-rustico/65">
-                        <div className="flex gap-2.5 items-start"><MapPin className="w-4 h-4 text-tbbRed shrink-0 mt-0.5" /><span>{loc.address.split(',')[0]}</span></div>
-                        <div className="flex gap-2.5 items-start"><Clock className="w-4 h-4 text-brasa shrink-0 mt-0.5" /><span>{loc.hours}</span></div>
+
+                      {/* Iframe do Mapa */}
+                      <div className="relative w-full h-48 rounded-xl overflow-hidden border border-white/[0.06] shadow-md bg-black mt-2">
+                        <iframe
+                          src={mapUrls[i]}
+                          width="100%"
+                          height="100%"
+                          style={{
+                            border: 0,
+                            filter: 'grayscale(1) invert(92%) contrast(1.15) brightness(0.95)',
+                          }}
+                          allowFullScreen={false}
+                          loading="lazy"
+                          referrerPolicy="no-referrer-when-downgrade"
+                          title={`Mapa da unidade ${loc.name}`}
+                        />
+                      </div>
+
+                      {/* Endereço e Horário */}
+                      <div className="flex flex-col gap-2.5 pt-3 border-t border-white/[0.05] font-sans-clean text-xs text-rustico/75">
+                        <div className="flex gap-2 items-start">
+                          <MapPin className="w-4 h-4 text-tbbRed shrink-0 mt-0.5" />
+                          <span>{loc.address}</span>
+                        </div>
+                        <div className="flex gap-2 items-start text-tbbRed font-bold">
+                          <Clock className="w-4 h-4 text-tbbRed shrink-0 mt-0.5" />
+                          <span>{loc.hours}</span>
+                        </div>
                       </div>
                     </div>
-                    <a href={loc.whatsappLink} target="_blank" rel="noopener noreferrer" className="w-full inline-flex items-center justify-center py-2.5 bg-white/[0.03] hover:bg-tbbRed border border-white/10 hover:border-tbbRed text-rustico font-cinzel font-bold text-[10px] uppercase tracking-widest rounded mt-6 transition-all duration-300">Fazer Pedido</a>
+
+                    {/* Botões do Card */}
+                    <div className="grid grid-cols-2 gap-3 mt-4">
+                      <a
+                        href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(loc.address)}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-center py-2.5 bg-transparent hover:bg-white/[0.05] border border-white/20 hover:border-white/40 text-rustico font-cinzel font-bold text-[9px] uppercase tracking-widest rounded transition-all duration-300"
+                      >
+                        Traçar Rotas
+                      </a>
+                      <a
+                        href="https://pedido.takeat.app/tbbhamburgueria01"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-center py-2.5 bg-tbbRed hover:bg-tbbRedHover text-rustico font-cinzel font-bold text-[9px] uppercase tracking-widest rounded transition-all duration-300 shadow-glow-tbbRed hover:scale-[1.01]"
+                      >
+                        Pedido
+                      </a>
+                    </div>
                   </div>
                 ))}
               </div>
+
             </div>
           </section>
         </ScrollFadeIn>
@@ -624,7 +715,32 @@ export default function Home() {
           </section>
         </ScrollFadeIn>
 
-        {/* 8. CTA FINAL */}
+        {/* 8. GATILHO NOSSA HISTÓRIA */}
+        <ScrollFadeIn direction="up">
+          <section className="py-24 px-6 relative overflow-hidden bg-gradient-to-b from-carvao to-black border-b border-white/[0.04]">
+            <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5')] bg-cover bg-center opacity-[0.03] mix-blend-overlay pointer-events-none" />
+            <div className="max-w-4xl mx-auto flex flex-col gap-8 items-center text-center relative z-10">
+              <span className="font-cinzel text-tbbRed text-[11px] tracking-[0.2em] font-bold uppercase">NOSSA HISTÓRIA</span>
+              <h2 className="flex flex-col gap-2 items-center">
+                <span className="font-display text-4xl sm:text-5xl lg:text-6xl text-rustico font-black uppercase tracking-tight">UMA DÉCADA DE PAIXÃO</span>
+                <span className="font-dm-serif-italic text-2xl sm:text-3xl text-tbbRed">Pela Verdadeira Brasa</span>
+              </h2>
+              <p className="font-sans-clean text-sm sm:text-base text-rustico/65 leading-relaxed max-w-2xl">
+                Tudo começou em Teresópolis com um sonho simples: servir o hambúrguer mais suculento, honesto e saboroso da serra. Hoje, com mais de dez anos de estrada e três unidades em funcionamento, cada blend na grelha e cada pão selado carregam a mesma dedicação artesanal do primeiro dia.
+              </p>
+              <div className="pt-4">
+                <Link
+                  href="/sobre"
+                  className="inline-flex items-center gap-3 px-8 py-4 bg-transparent border border-tbbRed/40 hover:border-tbbRed hover:bg-tbbRed/5 text-rustico font-cinzel font-bold text-xs uppercase tracking-widest rounded transition-all duration-300 hover:scale-[1.02] active:scale-95"
+                >
+                  Conheça a Nossa História <ArrowRight className="w-4 h-4 text-tbbRed" />
+                </Link>
+              </div>
+            </div>
+          </section>
+        </ScrollFadeIn>
+
+        {/* 9. CTA FINAL */}
         <ScrollFadeIn direction="up" delay={0.05}>
           <section className="relative py-24 px-6 border-b border-white/[0.04] bg-black overflow-hidden flex items-center justify-center text-center">
             <div className="absolute inset-0 z-0 overflow-hidden opacity-10">

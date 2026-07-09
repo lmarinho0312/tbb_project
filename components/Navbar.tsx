@@ -146,7 +146,7 @@ export default function Navbar({ activeSection }: NavbarProps) {
         <div className="hidden lg:flex items-center justify-end gap-6 w-1/3">
           {/* Delivery link */}
           <a
-            href={siteConfig.contact.whatsappLink}
+            href="https://pedido.takeat.app/tbbhamburgueria01"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 font-cinzel text-[11px] font-bold tracking-widest text-rustico/80 hover:text-brasa transition-colors"
@@ -159,7 +159,7 @@ export default function Navbar({ activeSection }: NavbarProps) {
 
           {/* Botão Peça Agora */}
           <a
-            href={siteConfig.contact.whatsappLink}
+            href="https://pedido.takeat.app/tbbhamburgueria01"
             target="_blank"
             rel="noopener noreferrer"
             className="px-5 py-2.5 bg-tbbRed hover:bg-tbbRedHover text-rustico font-cinzel font-bold text-[11px] tracking-widest uppercase rounded transition-all duration-300 shadow-[0_4px_14px_rgba(161,24,24,0.3)] hover:shadow-[0_6px_20px_rgba(161,24,24,0.5)] active:scale-95"
@@ -181,7 +181,7 @@ export default function Navbar({ activeSection }: NavbarProps) {
 
         {/* Botão Delivery Direita */}
         <a
-          href={siteConfig.contact.whatsappLink}
+          href="https://pedido.takeat.app/tbbhamburgueria01"
           target="_blank"
           rel="noopener noreferrer"
           className="lg:hidden flex items-center gap-1.5 px-3 py-1.5 bg-tbbRed text-rustico font-cinzel font-bold text-[10px] tracking-widest uppercase rounded shadow-lg active:scale-95 z-10"

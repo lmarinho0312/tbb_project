@@ -101,21 +101,7 @@ export default function TbbProposal() {
           </div>
         </section>
 
-        {/* 2. O Vídeo Walkthrough */}
-        <section className="mb-12">
-          <h2 className="font-display text-2xl sm:text-3xl font-bold uppercase text-center mb-8 flex items-center justify-center gap-3">
-            <Video className="w-6 h-6 text-[#A11818]" /> Vídeo Explicativo do Projeto
-          </h2>
-          
-          <div className="relative aspect-video w-full rounded-2xl overflow-hidden border border-[#FAF9F6]/20 bg-[#120F0C] shadow-2xl flex flex-col items-center justify-center p-6 text-center group">
-            <video 
-                src="/videos/proposal_walkthrough.mp4" 
-                controls 
-                poster="/fotos/Screenshot_5.webp"
-                className="absolute inset-0 w-full h-full object-cover z-10"
-              />
-          </div>
-        </section>
+
 
         {/* NOVA SEÇÃO: A Oportunidade dos Canais de IA (GEO) */}
         <section className="mb-12 bg-gradient-to-b from-[#120F0C] to-[#080808] border border-[#FAF9F6]/10 rounded-2xl p-8 sm:p-12 shadow-2xl relative overflow-hidden">
@@ -311,7 +297,7 @@ export default function TbbProposal() {
         <section className="mb-12 space-y-6">
           <h2 className="font-display text-2xl sm:text-3xl font-bold uppercase text-center mb-6">Bônus Exclusivos de Parceria</h2>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* Bônus 1: TripAdvisor */}
             <div className="bg-gradient-to-br from-[#1C1610] to-[#2C241B] border border-[#FFA000]/30 rounded-2xl p-6 shadow-2xl relative overflow-hidden">
               <div className="absolute top-0 right-0 px-2 py-0.5 bg-[#FFA000] text-black font-bold text-[9px] uppercase tracking-widest rounded-bl-lg">
@@ -343,6 +329,24 @@ export default function TbbProposal() {
                   </h3>
                   <p className="text-xs text-[#FAF9F6]/80 leading-relaxed">
                     Para que vocês não tenham que se preocupar com custos extras de servidores ou infraestrutura, cobrimos 100% da hospedagem profissional de alta performance nos primeiros 12 meses.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Bônus 3: Assistente Lu */}
+            <div className="bg-gradient-to-br from-[#1C1610] to-[#2C241B] border border-[#FFA000]/30 rounded-2xl p-6 shadow-2xl relative overflow-hidden">
+              <div className="absolute top-0 right-0 px-2 py-0.5 bg-[#FFA000] text-black font-bold text-[9px] uppercase tracking-widest rounded-bl-lg">
+                Bônus 3
+              </div>
+              <div className="flex gap-4 items-start">
+                <Cpu className="w-8 h-8 text-[#FFA000] shrink-0 mt-1" />
+                <div>
+                  <h3 className="font-display text-lg font-bold uppercase text-[#FFA000] mb-2">
+                    Agente de IA "Lu" Personalizado
+                  </h3>
+                  <p className="text-xs text-[#FAF9F6]/80 leading-relaxed">
+                    Desenvolvimento sob demanda de um agente de inteligência artificial conversacional especializado para guiar os clientes na escolha dos pedidos, resolvendo a indecisão na hora da compra e criando curiosidade nas redes sociais como um diferencial tecnológico inédito na cidade.
                   </p>
                 </div>
               </div>

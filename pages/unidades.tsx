@@ -349,7 +349,7 @@ export default function Unidades() {
               className="inline-flex items-center gap-2 bg-white/[0.02] border border-white/[0.04] px-4 py-2.5 rounded text-xs text-rustico/65 hover:text-brasa transition-colors group"
             >
               <Info className="w-4 h-4 text-tbbRed" />
-              <span>Quer consultar se a promoção está ativa hoje? <strong>Pergunte para a Lu →</strong></span>
+              <span>Quer consultar se a promoção está ativa hoje? <strong>Tire suas dúvidas no WhatsApp →</strong></span>
             </button>
           </div>
         </div>
