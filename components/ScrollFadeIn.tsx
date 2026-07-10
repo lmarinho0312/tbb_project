@@ -18,7 +18,8 @@ interface ScrollFadeInProps {
 
 /**
  * Wrapper reutilizável com fade‑in + slide suave ao entrar na viewport.
- * Usa física de mola (spring) para animações naturais e orgânicas.
+ * Usa apenas propriedades GPU-composited (opacity + translate) para máxima
+ * fluidez — sem scale nem spring pesados que causam jank no scroll.
  * Respeita a preferência do usuário por motion reduzido (prefers-reduced-motion).
  */
 const ScrollFadeIn: React.FC<ScrollFadeInProps> = ({
@@ -29,28 +30,29 @@ const ScrollFadeIn: React.FC<ScrollFadeInProps> = ({
 }) => {
   const prefersReduced = useReducedMotion();
 
-  // Offset inicial suave — pequeno o suficiente para ser elegante,
-  // mas perceptível o suficiente para dar a sensação de movimento.
+  // Offset pequeno: visualmente elegante, leve para a GPU renderizar
   const offset = prefersReduced
-    ? { x: 0, y: 0, scale: 1 }
+    ? { x: 0, y: 0 }
     : direction === 'left'
-    ? { x: -48, y: 0, scale: 0.98 }
+    ? { x: -28, y: 0 }
     : direction === 'right'
-    ? { x: 48, y: 0, scale: 0.98 }
+    ? { x: 28, y: 0 }
     : direction === 'up'
-    ? { x: 0, y: 32, scale: 0.98 }
-    : { x: 0, y: -32, scale: 0.98 };
+    ? { x: 0, y: 22 }
+    : { x: 0, y: -22 };
 
   const variants: Variants = {
     hidden: {
       opacity: 0,
-      ...offset,
+      // Usa translateX/Y via x/y — processado 100% na GPU (composite layer)
+      // Sem scale: evita reflow de layout que causa o jank
+      x: offset.x,
+      y: offset.y,
     },
     visible: {
       opacity: 1,
       x: 0,
       y: 0,
-      scale: 1,
     },
   };
 
@@ -59,17 +61,18 @@ const ScrollFadeIn: React.FC<ScrollFadeInProps> = ({
       className={className}
       initial={prefersReduced ? { opacity: 1 } : 'hidden'}
       whileInView={prefersReduced ? {} : 'visible'}
-      viewport={{ once: true, amount: 0.12 }}
+      viewport={{ once: true, amount: 0.1 }}
       variants={variants}
+      // will-change informa ao browser para pré-alocar camada GPU antes da animação
+      style={{ willChange: 'transform, opacity' }}
       transition={
         prefersReduced
           ? { duration: 0 }
           : {
-              // Mola natural — sem overshooting excessivo
-              type: 'spring',
-              stiffness: 60,
-              damping: 20,
-              mass: 0.8,
+              // Tween com easing suave — mais previsível que spring e zero jank
+              type: 'tween',
+              duration: 0.55,
+              ease: [0.22, 1, 0.36, 1], // easeOutQuint — rápido início, termina suave
               delay,
             }
       }
