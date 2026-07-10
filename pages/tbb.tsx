@@ -76,7 +76,7 @@ export default function TbbProposal() {
               <span className="text-[#A11818] drop-shadow-[0_0_15px_rgba(161,24,24,0.4)]">Receita Orgânica TBB</span>
             </h1>
             <p className="text-[#FAF9F6]/80 text-lg max-w-2xl mx-auto leading-relaxed">
-              Estamos abrindo um novo canal proprietário de vendas para o Grupo TBB, preparado para a nova era das buscas por Inteligência Artificial.
+              Estamos abrindo um novo canal de vendas para o Grupo TBB, preparado para a nova era das buscas por Inteligência Artificial.
             </p>
           </motion.div>
         </section>
@@ -90,13 +90,13 @@ export default function TbbProposal() {
           </div>
           <div className="space-y-6 text-[#FAF9F6]/90 leading-relaxed text-base sm:text-lg">
             <p>
-              Quem acompanha a trajetória de vocês sabe que o que construíram não é apenas uma hamburgueria comercial. É um patrimônio de família.
+              Quem acompanha a trajetória de vocês sabe que o que construíram não é apenas uma hamburgueria. É um patrimônio de família.
             </p>
             <p>
               Sei de onde vocês começaram, lá na época do Biel Lanches. Sei do trabalho duro da Luciane, do Pedro, do Gabriel, do Mateus, do Lucas e de toda a equipe para fazer o negócio crescer e se transformar no que é hoje. A união de vocês e a busca constante por inovação é o que fez a TBB se consolidar como referência na região.
             </p>
             <p>
-              A TBB evoluiu de lanches rápidos para uma verdadeira Steakhouse Premium, com salão aconchegante, lareira, cortes na parrilla e drinks selecionados. Esse posicionamento digital foi desenvolvido para refletir essa sofisticação e contar a história real da família de forma profissional, atraindo o público que busca por comida de verdade na serra.
+              A TBB evoluiu de lanches rápidos para uma verdadeira Steakhouse Premium, com salão aconchegante, lareira, cortes na parrilla e drinks selecionados. Esse posicionamento digital foi desenvolvido para refletir essa sofisticação e contar a história real da família de forma profissional, atraindo o público que busca por comida de verdade na nossa cidade.
             </p>
           </div>
         </section>
@@ -125,7 +125,7 @@ export default function TbbProposal() {
               Hoje, nenhum restaurante em Teresópolis está otimizado para aparecer como recomendação em buscas feitas via IA, e vocês serão os primeiros.
             </p>
             <p>
-              O site que programamos para o Grupo TBB não é apenas um folheto digital. Ele funciona como uma engrenagem que garante que quando alguém fizer essa pergunta para uma IA, a primeira opção recomendada seja a TBB.
+              O canal que programamos para o Grupo TBB não é apenas um folheto digital. Ele funciona como uma engrenagem otimizada para que quando alguém fizer essa pergunta para uma IA, a primeira opção recomendada seja a TBB.
             </p>
           </div>
         </section>
@@ -275,7 +275,7 @@ export default function TbbProposal() {
               <CheckCircle className="w-6 h-6 text-[#FFA000] shrink-0" />
               <div>
                 <h3 className="font-bold text-lg mb-1 text-[#FAF9F6]">Arquitetura Multi-Unidades</h3>
-                <p className="text-sm text-[#FAF9F6]/70">Seções e caminhos direcionados para as 3 unidades (Vale do Paraíso, Agriões e Várzea), destacando reservas de mesa ao lado da lareira e retirada de madrugada.</p>
+                <p className="text-sm text-[#FAF9F6]/70">Seções e caminhos direcionados para as 3 unidades (Vale do Paraíso, Agriões e Várzea), destacando reservas de mesa ao lado da lareira e funcionamento durante a madrugada.</p>
               </div>
             </div>
 
@@ -340,7 +340,7 @@ export default function TbbProposal() {
                     1 Ano de Hospedagem Profissional Grátis
                   </h3>
                   <p className="text-xs text-[#FAF9F6]/80 leading-relaxed">
-                    Cobrimos 100% dos custos de servidores e infraestrutura profissional de alta performance nos primeiros 12 meses, garantindo um site rápido e no ar sem qualquer preocupação extra para sua equipe.
+                    Cobrimos 100% dos custos de servidores e infraestrutura nos primeiros 12 meses, garantindo um site rápido e no ar sem qualquer preocupação extra para sua equipe.
                   </p>
                 </div>
               </div>
