@@ -11,8 +11,11 @@ export default function Document() {
         {/* Preconnect para imagens Unsplash — economia de ~300ms no LCP */}
         <link rel="preconnect" href="https://images.unsplash.com" crossOrigin="anonymous" />
         {/* ⚠️ O link de fontes foi REMOVIDO — fontes agora carregam via next/font sem bloquear render */}
-        <link rel="icon" href="/favicon.ico" />
-        {/* Fallback do favicon e apple touch icon */}
+        {/* Favicon principal e fallbacks para todos os navegadores e dispositivos */}
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+        <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <meta name="theme-color" content="#121212" />
       </Head>

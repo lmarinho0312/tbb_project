@@ -350,7 +350,7 @@ export default function TbbProposal() {
           {/* Bônus 3: Assistente Lu (Destaque Principal) */}
           <div className="bg-gradient-to-br from-[#1C1610] to-[#2C241B] border-2 border-[#FFA000]/50 rounded-2xl p-8 shadow-2xl relative overflow-hidden mt-6">
             <div className="absolute top-0 right-0 px-3 py-1 bg-[#FFA000] text-black font-bold text-[10px] uppercase tracking-widest rounded-bl-lg">
-              Bônus 3
+              Bônus Destaque
             </div>
             <div className="flex flex-col md:flex-row gap-6 items-start">
               <div className="p-3 bg-[#FFA000]/10 rounded-full border border-[#FFA000]/20 shrink-0">
@@ -361,7 +361,7 @@ export default function TbbProposal() {
                   Diferencial Competitivo Exclusivo
                 </span>
                 <h3 className="font-display text-xl sm:text-2xl font-bold uppercase text-[#FAF9F6]">
-                  Bônus Destaque
+                  Agente Inteligente de IA "Lu"
                 </h3>
                 <p className="text-sm text-[#FAF9F6]/90 leading-relaxed">
                   A indecisão do cliente ao escolher os pratos é uma das principais dores do delivery, principal causador do abandono de carrinhos. Para resolver isso, criaremos a Lu, um agente de IA conversacional inteligente em homenagem à Luciane, mãe de vocês. Ela guiará de forma interativa cada cliente na escolha ideal, de acordo com todas as opções e ingredientes disponíveis no cardápio. Essa inovação inédita em Teresópolis tende a gerar grande engajamento e curiosidade, atraindo pedidos no curto prazo e criando fidelização a médio e longo prazo pelo prazer e facilidade de interação com a ferramenta.
