@@ -132,12 +132,24 @@ export default function TbbProposal() {
 
         {/* 3. A Calculadora do Canal Orgânico */}
         <section className="mb-12 bg-gradient-to-b from-[#1C1610] to-[#0E0B08] border border-[#FAF9F6]/10 rounded-2xl p-8 sm:p-12 shadow-2xl">
-          <div className="flex items-center gap-3 mb-8">
+          <div className="flex items-center gap-3 mb-6">
             <Calculator className="w-8 h-8 text-[#FFA000]" />
             <div>
               <h2 className="font-display text-2xl sm:text-3xl font-bold uppercase text-[#FFA000]">Simulador de Receita</h2>
               <p className="text-sm text-[#FAF9F6]/60">Estime o faturamento que o Grupo TBB deixa de capturar por não dominar este canal.</p>
             </div>
+          </div>
+
+          <div className="mb-8 p-4 bg-black/30 border border-[#FAF9F6]/5 rounded-xl text-sm text-[#FAF9F6]/80 leading-relaxed space-y-2">
+            <p className="font-semibold text-[#FFA000] uppercase tracking-wide text-xs">Como usar e entender as métricas:</p>
+            <p>
+              Use as barras abaixo para fazer simulações de vendas. Arraste os controles para ver o impacto financeiro direto no faturamento anual da TBB ao criar um canal próprio livre de taxas.
+            </p>
+            <ul className="list-disc pl-5 space-y-1 text-xs text-[#FAF9F6]/70">
+              <li><strong>Buscas Mensais:</strong> Quantidade de pessoas em Teresópolis buscando restaurantes e burguers nas redes e no Google.</li>
+              <li><strong>Porcentagem de Atração:</strong> O percentual desse público que decide comprar diretamente no seu novo site.</li>
+              <li><strong>Ticket Médio por Mesa/Jantar:</strong> O valor médio que cada cliente ou família gasta em um pedido.</li>
+            </ul>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
@@ -239,7 +251,7 @@ export default function TbbProposal() {
               <CheckCircle className="w-6 h-6 text-[#FFA000] shrink-0" />
               <div>
                 <h3 className="font-bold text-lg mb-1 text-[#FAF9F6]">Análise de Comportamento (200+ Posts)</h3>
-                <p className="text-sm text-[#FAF9F6]/70">Ingerimos e estudamos aproximadamente 200 publicações no Instagram para extrair a alma da marca, os produtos mais vendidos e a linguagem rústica ideal.</p>
+                <p className="text-sm text-[#FAF9F6]/70">Ingerimos e estudamos aproximadamente 200 publicações no Instagram para extrair a alma da marca, os produtos mais vendidos e a linguagem ideal.</p>
               </div>
             </div>
 
@@ -254,8 +266,8 @@ export default function TbbProposal() {
             <div className="flex gap-4 p-5 bg-[#120F0C] border border-[#FAF9F6]/5 rounded-xl">
               <CheckCircle className="w-6 h-6 text-[#FFA000] shrink-0" />
               <div>
-                <h3 className="font-bold text-lg mb-1 text-[#FAF9F6]">Identidade Rústico-Premium de Alta Performance</h3>
-                <p className="text-sm text-[#FAF9F6]/70">Canal extremamente rápido, moderno e fácil de atualizar, customizado nas cores carvão e brasa da parrilla, fontes premium Anton e Montserrat, com micro-animações interativas de faíscas.</p>
+                <h3 className="font-bold text-lg mb-1 text-[#FAF9F6]">Identidade Visual Premium</h3>
+                <p className="text-sm text-[#FAF9F6]/70">Canal extremamente rápido, moderno e fácil de atualizar, customizado nas cores carvão e brasa da parrilla, finalizado com micro-animações interativas.</p>
               </div>
             </div>
 
@@ -278,8 +290,8 @@ export default function TbbProposal() {
             <div className="flex gap-4 p-5 bg-[#120F0C] border border-[#FAF9F6]/5 rounded-xl">
               <CheckCircle className="w-6 h-6 text-[#FFA000] shrink-0" />
               <div>
-                <h3 className="font-bold text-lg mb-1 text-[#FAF9F6]">Pronto para a Busca do Amanhã (IA)</h3>
-                <p className="text-sm text-[#FAF9F6]/70">Configuração técnica invisível para que inteligências artificiais e assistentes de voz recomendem e citem o Grupo TBB como resposta na serra.</p>
+                <h3 className="font-bold text-lg mb-1 text-[#FAF9F6]">Otimização para Busca por IA</h3>
+                <p className="text-sm text-[#FAF9F6]/70">Configuração técnica estruturada para que inteligências artificiais e assistentes de voz recomendem e citem a TBB como a principal opção em Teresópolis.</p>
               </div>
             </div>
           </div>
@@ -297,9 +309,9 @@ export default function TbbProposal() {
         <section className="mb-12 space-y-6">
           <h2 className="font-display text-2xl sm:text-3xl font-bold uppercase text-center mb-6">Bônus Exclusivos de Parceria</h2>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Bônus 1: TripAdvisor */}
-            <div className="bg-gradient-to-br from-[#1C1610] to-[#2C241B] border border-[#FFA000]/30 rounded-2xl p-6 shadow-2xl relative overflow-hidden">
+            <div className="bg-gradient-to-br from-[#1C1610] to-[#2C241B] border border-[#FFA000]/30 rounded-2xl p-6 shadow-2xl relative overflow-hidden flex flex-col justify-between">
               <div className="absolute top-0 right-0 px-2 py-0.5 bg-[#FFA000] text-black font-bold text-[9px] uppercase tracking-widest rounded-bl-lg">
                 Bônus 1
               </div>
@@ -310,14 +322,14 @@ export default function TbbProposal() {
                     Configuração & Otimização do TripAdvisor
                   </h3>
                   <p className="text-xs text-[#FAF9F6]/80 leading-relaxed">
-                    Teresópolis é um polo de turismo gastronômico muito forte. Para capturar todos os visitantes e turistas que sobem a serra nos fins de semana, faremos a configuração e a otimização completa do perfil do Grupo TBB no TripAdvisor sem custo adicional.
+                    Teresópolis é um forte polo de turismo gastronômico. Faremos a configuração e otimização completa do perfil da TBB no TripAdvisor para destacar sua presença e atrair os visitantes que sobem a serra no fim de semana.
                   </p>
                 </div>
               </div>
             </div>
 
             {/* Bônus 2: Hospedagem Grátis */}
-            <div className="bg-gradient-to-br from-[#120F0C] to-[#1C1610] border border-[#A11818]/30 rounded-2xl p-6 shadow-2xl relative overflow-hidden">
+            <div className="bg-gradient-to-br from-[#120F0C] to-[#1C1610] border border-[#A11818]/30 rounded-2xl p-6 shadow-2xl relative overflow-hidden flex flex-col justify-between">
               <div className="absolute top-0 right-0 px-2 py-0.5 bg-[#A11818] text-white font-bold text-[9px] uppercase tracking-widest rounded-bl-lg">
                 Bônus 2
               </div>
@@ -328,35 +340,43 @@ export default function TbbProposal() {
                     1 Ano de Hospedagem Profissional Grátis
                   </h3>
                   <p className="text-xs text-[#FAF9F6]/80 leading-relaxed">
-                    Para que vocês não tenham que se preocupar com custos extras de servidores ou infraestrutura, cobrimos 100% da hospedagem profissional de alta performance nos primeiros 12 meses.
+                    Cobrimos 100% dos custos de servidores e infraestrutura profissional de alta performance nos primeiros 12 meses, garantindo um site rápido e no ar sem qualquer preocupação extra para sua equipe.
                   </p>
                 </div>
               </div>
             </div>
+          </div>
 
-            {/* Bônus 3: Assistente Lu */}
-            <div className="bg-gradient-to-br from-[#1C1610] to-[#2C241B] border border-[#FFA000]/30 rounded-2xl p-6 shadow-2xl relative overflow-hidden">
-              <div className="absolute top-0 right-0 px-2 py-0.5 bg-[#FFA000] text-black font-bold text-[9px] uppercase tracking-widest rounded-bl-lg">
-                Bônus 3
+          {/* Bônus 3: Assistente Lu (Destaque Principal) */}
+          <div className="bg-gradient-to-br from-[#1C1610] to-[#2C241B] border-2 border-[#FFA000]/50 rounded-2xl p-8 shadow-2xl relative overflow-hidden mt-6">
+            <div className="absolute top-0 right-0 px-3 py-1 bg-[#FFA000] text-black font-bold text-[10px] uppercase tracking-widest rounded-bl-lg">
+              Bônus 3
+            </div>
+            <div className="flex flex-col md:flex-row gap-6 items-start">
+              <div className="p-3 bg-[#FFA000]/10 rounded-full border border-[#FFA000]/20 shrink-0">
+                <Cpu className="w-10 h-10 text-[#FFA000]" />
               </div>
-              <div className="flex gap-4 items-start">
-                <Cpu className="w-8 h-8 text-[#FFA000] shrink-0 mt-1" />
-                <div>
-                  <h3 className="font-display text-lg font-bold uppercase text-[#FFA000] mb-2">
-                    Agente de IA "Lu" Personalizado
-                  </h3>
-                  <p className="text-xs text-[#FAF9F6]/80 leading-relaxed">
-                    Desenvolvimento sob demanda de um agente de inteligência artificial conversacional especializado para guiar os clientes na escolha dos pedidos, resolvendo a indecisão na hora da compra e criando curiosidade nas redes sociais como um diferencial tecnológico inédito na cidade.
-                  </p>
-                </div>
+              <div className="space-y-3">
+                <span className="text-[#FFA000] font-cinzel text-xs font-bold tracking-widest uppercase block">
+                  Diferencial Competitivo Exclusivo
+                </span>
+                <h3 className="font-display text-xl sm:text-2xl font-bold uppercase text-[#FAF9F6]">
+                  Bônus Destaque
+                </h3>
+                <p className="text-sm text-[#FAF9F6]/90 leading-relaxed">
+                  A indecisão do cliente ao escolher os pratos é uma das principais dores do delivery, principal causador do abandono de carrinhos. Para resolver isso, criaremos a Lu, um agente de IA conversacional inteligente em homenagem à Luciane, mãe de vocês. Ela guiará de forma interativa cada cliente na escolha ideal, de acordo com todas as opções e ingredientes disponíveis no cardápio. Essa inovação inédita em Teresópolis tende a gerar grande engajamento e curiosidade, atraindo pedidos no curto prazo e criando fidelização a médio e longo prazo pelo prazer e facilidade de interação com a ferramenta.
+                </p>
               </div>
             </div>
           </div>
         </section>
 
         {/* 5. CTAs Finais */}
-        <section className="text-center pt-8 border-t border-[#FAF9F6]/10 mb-12">
-          <h2 className="font-display text-2xl sm:text-3xl font-bold uppercase mb-8">Vamos dar o próximo passo?</h2>
+        <section className="text-center pt-8 border-t border-[#FAF9F6]/10 mb-12 max-w-3xl mx-auto">
+          <h2 className="font-display text-2xl sm:text-3xl font-bold uppercase mb-4">Vamos dar o próximo passo?</h2>
+          <p className="text-sm text-[#FAF9F6]/70 leading-relaxed mb-8">
+            Desenvolvemos este protótipo sob medida, cuidando de cada detalhe técnico e visual para refletir a verdadeira essência da TBB. Convidamos você a explorar o site completo, navegando por todas as seções (como o cardápio interativo e os stories automáticos) para perceber o cuidado, a sofisticação e a robustez da plataforma que preparamos para o seu negócio.
+          </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
              {/* CTA 1: Visualizar Site */}
